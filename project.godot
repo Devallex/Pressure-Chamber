@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Pressure Chamber"
+run/main_scene="uid://b6hps28637svp"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalAtmosphere="*res://classes/global_atmosphere.gd"
 
 [dotnet]
 

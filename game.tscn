@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6hps28637svp"]
+
+[ext_resource type="Script" uid="uid://p6qq0kn3nhiy" path="res://classes/pressure_body.gd" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://bifcaw6eoo028" path="res://godot-free-look-camera/free_look_camera.gd" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://ctskqyaek0chk" path="res://objects/chamber.tscn" id="3_feb5d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mwb40"]
+
+[sub_resource type="Sky" id="Sky_80nbo"]
+sky_material = SubResource("ProceduralSkyMaterial_mwb40")
+
+[sub_resource type="Environment" id="Environment_e2o6t"]
+background_mode = 2
+sky = SubResource("Sky_80nbo")
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e2o6t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.960493, -0.0776816, -0.267243, 0.278304, 0.268098, 0.922318, 0, -0.960255, 0.279125, 0, 10, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.56388)
+script = ExtResource("1_e2o6t")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55542, 0.891396, -2.50364)
+use_collision = true
+script = ExtResource("1_80nbo")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.317628, 0.891396, -2.50364)
+use_collision = true
+script = ExtResource("1_80nbo")
+
+[node name="Chamber" parent="." instance=ExtResource("3_feb5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.511446, 0, -2.03198)

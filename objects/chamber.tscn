@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctskqyaek0chk"]
+
+[ext_resource type="Script" uid="uid://bxmvhdna3l5gs" path="res://objects/chamber.gd" id="1_k4klk"]
+[ext_resource type="Script" uid="uid://b87wyy63imfgw" path="res://classes/pressure_atmopshere.gd" id="2_x6w7t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibwah"]
+size = Vector3(4.8, 1.9, 2.3)
+
+[node name="Chamber" type="Node3D" node_paths=PackedStringArray("atmosphere", "field")]
+script = ExtResource("1_k4klk")
+atmosphere = NodePath("PressureAtmosphere")
+field = NodePath("Area3D")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+size = Vector3(5, 0.1, 2.5)
+
+[node name="Roof" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+size = Vector3(5, 0.1, 2.5)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_ibwah")
+
+[node name="PressureAtmosphere" type="Node3D" parent="."]
+transform = Transform3D(0.999781, -0.0188161, 0.00915178, 0.0186878, 0.999729, 0.0139114, -0.00941103, -0.0137373, 0.999861, 0, 0, 0)
+script = ExtResource("2_x6w7t")
+pressure = 5.0
+metadata/_custom_type_script = "uid://b87wyy63imfgw"
