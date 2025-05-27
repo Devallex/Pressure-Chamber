@@ -29,6 +29,7 @@ script = ExtResource("1_e2o6t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55542, 0.891396, -2.50364)
 use_collision = true
 script = ExtResource("1_80nbo")
+pressure = 2.0
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.317628, 0.891396, -2.50364)
@@ -37,3 +38,4 @@ script = ExtResource("1_80nbo")
 
 [node name="Chamber" parent="." instance=ExtResource("3_feb5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.511446, 0, -2.03198)
+pressurize = false

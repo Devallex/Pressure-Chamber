@@ -8,6 +8,8 @@ size = Vector3(4.8, 1.9, 2.3)
 
 [node name="Chamber" type="Node3D" node_paths=PackedStringArray("atmosphere", "field")]
 script = ExtResource("1_k4klk")
+pressurize = true
+target_pressure = 5.0
 atmosphere = NodePath("PressureAtmosphere")
 field = NodePath("Area3D")
 

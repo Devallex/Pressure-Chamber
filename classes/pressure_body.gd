@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	print(scalar)
 	scale = Vector3.ONE * scalar
 	
-	position = position + Vector3(delta, 0, 0)
+	#position = position + Vector3(delta, 0, 0)
 
 #static func _input(event):
 	#if event is InputEventMouseButton:

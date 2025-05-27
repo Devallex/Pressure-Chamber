@@ -1,10 +1,12 @@
 extends Node3D
 
-#@export var exit_atmosphere: PressureAtmosphere = GlobalAtmosphere
+@export var pressurize: bool = false
+@export var target_pressure: float = 2.0
+
 @export var atmosphere: PressureAtmosphere
 @export var field: Area3D
 
-@export var bodies: Array[PressureBody]
+var bodies: Array[PressureBody]
 
 func _ready() -> void:
 	field.body_entered.connect(func(body: Node3D):
@@ -25,4 +27,14 @@ func _ready() -> void:
 	)
 
 func _process(delta: float) -> void:
-	print(bodies)
+	# Pressurize
+	var pressure_goal: float = target_pressure
+	if not pressurize:
+		pressure_goal = atmosphere.atmosphere.pressure
+	
+	if pressure_goal < atmosphere.pressure:
+		atmosphere.pressure -= delta
+		atmosphere.pressure = max(atmosphere.pressure, pressure_goal)
+	elif pressure_goal > atmosphere.pressure:
+		atmosphere.pressure += delta
+		atmosphere.pressure = min(atmosphere.pressure, pressure_goal)
