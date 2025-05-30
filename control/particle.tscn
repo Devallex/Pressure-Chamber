@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0pd31273g6rw"]
+
+[ext_resource type="Script" uid="uid://bud55w5vienmj" path="res://control/particle.gd" id="1_inuur"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vb7p7"]
+radius = 100.0
+
+[sub_resource type="Gradient" id="Gradient_vb7p7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_70kk8"]
+gradient = SubResource("Gradient_vb7p7")
+
+[node name="Particle" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_inuur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vb7p7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_70kk8")
