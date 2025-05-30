@@ -1,10 +1,7 @@
 extends PressureAtmosphere
 
-func _ready():
-	atmosphere = null
-
 func _update_pressure() -> void:
 	pass
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	pass

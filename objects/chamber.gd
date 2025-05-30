@@ -27,6 +27,9 @@ func _ready() -> void:
 	)
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("toggle"):
+		pressurize = not pressurize
+	
 	# Pressurize
 	var pressure_goal: float = target_pressure
 	if not pressurize:

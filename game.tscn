@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b6hps28637svp"]
 
-[ext_resource type="Script" uid="uid://p6qq0kn3nhiy" path="res://classes/pressure_body.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://bifcaw6eoo028" path="res://godot-free-look-camera/free_look_camera.gd" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://b6npuf6rm5ayx" path="res://objects/ball.tscn" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ctskqyaek0chk" path="res://objects/chamber.tscn" id="3_feb5d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mwb40"]
@@ -25,17 +25,30 @@ transform = Transform3D(0.960493, -0.0776816, -0.267243, 0.278304, 0.268098, 0.9
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.56388)
 script = ExtResource("1_e2o6t")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55542, 0.891396, -2.50364)
-use_collision = true
-script = ExtResource("1_80nbo")
-pressure = 2.0
-
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.317628, 0.891396, -2.50364)
-use_collision = true
-script = ExtResource("1_80nbo")
-
 [node name="Chamber" parent="." instance=ExtResource("3_feb5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.511446, 0, -2.03198)
 pressurize = false
+
+[node name="Ball" parent="." instance=ExtResource("3_fc0e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55303, 1.23595, -1.99363)
+
+[node name="Ball2" parent="." instance=ExtResource("3_fc0e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55557, 0.506296, -1.99363)
+
+[node name="Ball3" parent="." instance=ExtResource("3_fc0e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.606335, 4.58793, -2.00396)
+
+[node name="Ball4" parent="." instance=ExtResource("3_fc0e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46268, 0.696478, -1.99363)
+
+[node name="Ball6" parent="." instance=ExtResource("3_fc0e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457716, 0.516226, -1.99363)
+
+[node name="Ball7" parent="." instance=ExtResource("3_fc0e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.403851, 1.00696, -1.42012)
+
+[node name="Ball8" parent="." instance=ExtResource("3_fc0e3")]
+transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, -0.188359, 1.31695, -1.11884)
+
+[node name="Ball9" parent="." instance=ExtResource("3_fc0e3")]
+transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, -0.486226, 0.516226, -1.62764)

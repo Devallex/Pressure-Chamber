@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctskqyaek0chk"]
+[gd_scene load_steps=5 format=3 uid="uid://ctskqyaek0chk"]
 
 [ext_resource type="Script" uid="uid://bxmvhdna3l5gs" path="res://objects/chamber.gd" id="1_k4klk"]
-[ext_resource type="Script" uid="uid://b87wyy63imfgw" path="res://classes/pressure_atmopshere.gd" id="2_x6w7t"]
+[ext_resource type="Material" uid="uid://cpyot4ma8g8v0" path="res://materials/glass.tres" id="2_sd1jp"]
+[ext_resource type="Script" uid="uid://c8b6xpmeap6ym" path="res://objects/chamber_atmosphere.gd" id="3_sd1jp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibwah"]
 size = Vector3(4.8, 1.9, 2.3)
@@ -14,11 +15,31 @@ atmosphere = NodePath("PressureAtmosphere")
 field = NodePath("Area3D")
 
 [node name="Floor" type="CSGBox3D" parent="."]
+use_collision = true
 size = Vector3(5, 0.1, 2.5)
 
 [node name="Roof" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+use_collision = true
 size = Vector3(5, 0.1, 2.5)
+
+[node name="Glass1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45, 1, 0)
+use_collision = true
+size = Vector3(0.1, 1.9, 2.5)
+material = ExtResource("2_sd1jp")
+
+[node name="Glass2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45, 1, 0)
+use_collision = true
+size = Vector3(0.1, 1.9, 2.5)
+material = ExtResource("2_sd1jp")
+
+[node name="Glass3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.2)
+use_collision = true
+size = Vector3(4.8, 1.9, 0.1)
+material = ExtResource("2_sd1jp")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -28,6 +49,6 @@ shape = SubResource("BoxShape3D_ibwah")
 
 [node name="PressureAtmosphere" type="Node3D" parent="."]
 transform = Transform3D(0.999781, -0.0188161, 0.00915178, 0.0186878, 0.999729, 0.0139114, -0.00941103, -0.0137373, 0.999861, 0, 0, 0)
-script = ExtResource("2_x6w7t")
+script = ExtResource("3_sd1jp")
 pressure = 5.0
 metadata/_custom_type_script = "uid://b87wyy63imfgw"
