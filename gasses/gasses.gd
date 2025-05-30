@@ -1,5 +1,17 @@
 extends Node
 
+func get_by_symbol(symbol: String): 
+	for gas in gasses:
+		if gas.symbol == symbol:
+			return gas
+	return null
+
+func get_by_name(name: String): 
+	for gas in gasses:
+		if gas.name == name:
+			return gas
+	return null
+
 var gasses: Array[Gas] = [
 	Gas.new({
 		"name" = "Hydrogen",
@@ -12,7 +24,3 @@ var gasses: Array[Gas] = [
 		"atomic_mass" = 4.0026
 	})
 ]
-
-#func get_by_symbol(symbol: String)
-	#for gas in gasses:
-		#gas

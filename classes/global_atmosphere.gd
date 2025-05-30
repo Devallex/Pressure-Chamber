@@ -1,6 +1,7 @@
 extends PressureAtmosphere
 
 func _ready():
+	super()
 	atmosphere = null
 
 func _update_pressure() -> void:

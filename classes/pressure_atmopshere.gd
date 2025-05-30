@@ -7,6 +7,9 @@ class_name PressureAtmosphere extends Node3D
 
 @export var gasses: Dictionary[Gas, float] = {}
 
+func _ready() -> void:
+	add_to_group("presusre_atmosphere")
+
 func _process(_delta: float) -> void:
 	_update_pressure()
 

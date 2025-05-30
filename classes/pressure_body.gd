@@ -2,6 +2,9 @@ class_name PressureBody extends PressureAtmosphere
 
 @export var scalar_weight: float = 1.0
 
+func _ready():
+	add_to_group("presusre_body")
+
 #static var drag_target: PressureBody
 #static var mouse_position: Vector3
 

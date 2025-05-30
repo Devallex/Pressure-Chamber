@@ -4,6 +4,7 @@ class_name PressureRigidBody extends PressureBody
 @onready var csg_sphere: CSGSphere3D = %CSGSphere3D
 
 func _ready():
+	super()
 	gasses[Gas.new({
 		"symbol": "?",
 		"name": "Test",
