@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs8oao5b1d51h"]
+[gd_scene load_steps=4 format=3 uid="uid://cs8oao5b1d51h"]
 
 [ext_resource type="Script" uid="uid://cdjgkyxblpkog" path="res://control/particle_representation.gd" id="1_vb7p7"]
 [ext_resource type="PackedScene" uid="uid://d0pd31273g6rw" path="res://control/particle.tscn" id="2_70kk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70kk8"]
+size = Vector2(1152, 648)
 
 [node name="ParticleRepresentation" type="Node2D"]
 script = ExtResource("1_vb7p7")
 
 [node name="RigidBody2D" parent="." instance=ExtResource("2_70kk8")]
 position = Vector2(577, 318)
+gravity_scale = 0.1
+
+[node name="Boundary" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(576, 324)
+shape = SubResource("RectangleShape2D_70kk8")
