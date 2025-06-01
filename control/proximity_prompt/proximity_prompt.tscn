@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://i16dniaw7tor"]
+
+[ext_resource type="Script" uid="uid://ct51md4g0udi0" path="res://control/proximity_prompt/proximity_prompt.gd" id="1_blq4p"]
+[ext_resource type="Theme" uid="uid://c87csf7tuub13" path="res://control/proximity_prompt/proximity_prompt_theme.tres" id="3_auh3m"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_27awe"]
+viewport_path = NodePath("SubViewport")
+
+[node name="ProximityPrompt" type="Node3D"]
+script = ExtResource("1_blq4p")
+metadata/_edit_vertical_guides_ = [-64.0]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+pixel_size = 0.0015
+no_depth_test = true
+texture = SubResource("ViewportTexture_27awe")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_auh3m")
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_auh3m")
+
+[node name="Panel" type="Panel" parent="SubViewport/Control/MarginContainer"]
+clip_children = 2
+layout_mode = 2
+
+[node name="Action" type="Label" parent="SubViewport/Control/MarginContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 100
+text = "Action"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fill" type="ColorRect" parent="SubViewport/Control/MarginContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.521569)

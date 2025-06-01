@@ -1,9 +1,10 @@
-extends Node3D
+class_name PressureChamber extends Node3D
 
+@export var door_open: bool = false
 @export var pressurize: bool = false
-@export var target_pressure: float = 2.0
 
 @export var atmosphere: PressureAtmosphere
+@export var target_atmosphere: PressureAtmosphere
 @export var field: Area3D
 
 var bodies: Array[PressureBody]
@@ -25,13 +26,31 @@ func _ready() -> void:
 		bodies.remove_at(bodies.find(body))
 		body.atmosphere = atmosphere.atmosphere
 	)
+	
+	%PressurizePrompt.triggered.connect(func():
+		pressurize = not pressurize
+	)
+	%DoorPrompt.triggered.connect(func():
+		door_open = not door_open
+		if door_open:
+			%Door.hide()
+			%Door.use_collision = false
+		else:
+			%Door.show()
+			%Door.use_collision = true
+	)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("toggle"):
-		pressurize = not pressurize
+	var balanced: bool = atmosphere.pressure == atmosphere.atmosphere.pressure
+
+	target_atmosphere.temperature = %Thermostat.set_temperature
+
+	%DoorPrompt.disabled = not balanced
+	%PressurizePrompt.disabled = door_open
+	
 	
 	# Pressurize
-	var pressure_goal: float = target_pressure
+	var pressure_goal: float = target_atmosphere.pressure
 	if not pressurize:
 		pressure_goal = atmosphere.atmosphere.pressure
 	

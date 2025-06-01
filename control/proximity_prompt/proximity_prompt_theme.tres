@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c87csf7tuub13"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p0m5w"]
+resource_local_to_scene = true
+border_width_left = 50
+border_width_top = 50
+border_width_right = 50
+border_width_bottom = 50
+border_color = Color(0.492985, 0.492985, 0.492985, 0.870588)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 10
+
+[resource]
+MarginContainer/constants/margin_bottom = 250
+MarginContainer/constants/margin_top = 250
+Panel/styles/panel = SubResource("StyleBoxFlat_p0m5w")

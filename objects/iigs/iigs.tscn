@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5ojwmpere5j7"]
+
+[ext_resource type="Material" uid="uid://d16dajk3wf54u" path="res://materials/metal/metal.tres" id="2_qfyay"]
+[ext_resource type="Material" uid="uid://cpyot4ma8g8v0" path="res://materials/glass.tres" id="3_dunpi"]
+[ext_resource type="PackedScene" uid="uid://i16dniaw7tor" path="res://control/proximity_prompt/proximity_prompt.tscn" id="3_qn5qr"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dunpi"]
+viewport_path = NodePath("CSGMesh3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dunpi"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_dunpi")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dunpi"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_dunpi")
+
+[sub_resource type="LabelSettings" id="LabelSettings_dunpi"]
+font_size = 60
+font_color = Color(0, 0.858824, 0.0980392, 1)
+
+[node name="Iigs" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0239883, 0.5, 0.0326932)
+use_collision = true
+size = Vector3(0.25, 1, 1.5)
+material = ExtResource("2_qfyay")
+
+[node name="Screen" type="CSGBox3D" parent="."]
+transform = Transform3D(-3.78552e-08, -2.18557e-08, 1, -0.5, 0.866025, 0, -0.866025, -0.5, -4.37114e-08, 0.0239883, 1.25, -0.0673068)
+size = Vector3(0.001, 0.75, 1)
+material = ExtResource("3_dunpi")
+
+[node name="CSGMesh3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.475307, 8.05283e-09, 1.41468e-08, -7.08263e-09, 0.5, -0.411628, -2.07763e-08, 0.866025, 0.237654, 0.0413981, 1.1214, 0.0193301)
+mesh = SubResource("PlaneMesh_dunpi")
+
+[node name="SubViewport" type="SubViewport" parent="CSGMesh3D"]
+transparent_bg = true
+
+[node name="Control" type="Control" parent="CSGMesh3D/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CSGMesh3D/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Infinite Inert
+Gas Supply"
+label_settings = SubResource("LabelSettings_dunpi")
+
+[node name="Tank" type="Node3D" parent="."]
+transform = Transform3D(-4.33372e-08, -5.707e-09, 1, -0.130561, 0.99144, 0, -0.99144, -0.130561, -4.37114e-08, 0.0239883, 0, 0.0326932)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Tank"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141267, 0.440546, 0.427509)
+material_override = ExtResource("2_qfyay")
+radius = 0.15
+height = 0.9
+sides = 16
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Tank"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141267, 0.436387, 0.00857395)
+material_override = ExtResource("2_qfyay")
+radius = 0.15
+height = 0.9
+sides = 16
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Tank"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141267, 0.440734, -0.407559)
+material_override = ExtResource("2_qfyay")
+radius = 0.15
+height = 0.9
+sides = 16
+
+[node name="ProximityPrompt" parent="." instance=ExtResource("3_qn5qr")]
+transform = Transform3D(0.999998, -0.000434916, 0.00184964, -0.00055103, 0.865242, 0.501353, -0.00181843, -0.501353, 0.865241, -8.14968e-06, 1.09557, -0.00939462)
+action_text = "Interact"

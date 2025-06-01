@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbih0mja6l6g"]
+
+[ext_resource type="Script" uid="uid://d4mhw5gjy2ja2" path="res://objects/bunsen_burner/bunsen_burner.gd" id="1_mbunv"]
+[ext_resource type="Material" uid="uid://d16dajk3wf54u" path="res://materials/metal/metal.tres" id="1_ywcpi"]
+[ext_resource type="Material" uid="uid://tjkvy58oknk" path="res://materials/fire.tres" id="2_asbg3"]
+[ext_resource type="PackedScene" uid="uid://i16dniaw7tor" path="res://control/proximity_prompt/proximity_prompt.tscn" id="2_bcowy"]
+[ext_resource type="PackedScene" uid="uid://syyjryypw341" path="res://control/dialogs/temperature_dialog/temperature_dialog.tscn" id="3_0ko2e"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_hilqq"]
+resource_local_to_scene = true
+material = ExtResource("2_asbg3")
+radius = 0.05
+height = 0.1
+
+[node name="BunsenBurner" type="Node3D"]
+script = ExtResource("1_mbunv")
+
+[node name="ActivityPrompt" parent="." instance=ExtResource("2_bcowy")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.489464, 0.402885, 0)
+activation_time = 0.0
+
+[node name="TemperaturePrompt" parent="." instance=ExtResource("2_bcowy")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.489464, 0.095403, 0)
+action_text = "Set Temp"
+activation_time = 0.0
+input_action = "secondary_interact"
+
+[node name="TemperatureDialog" parent="." instance=ExtResource("3_0ko2e")]
+unique_name_in_owner = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.26498e-06, 0.24896, -1.37091e-06)
+radius = 0.05
+height = 0.5
+material = ExtResource("1_ywcpi")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0124512, 0)
+radius = 0.15
+height = 0.0249023
+material = ExtResource("1_ywcpi")
+
+[node name="Particles" type="CPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.516472, 0)
+amount = 20
+speed_scale = 4.0
+explosiveness = 0.03
+randomness = 0.21
+lifetime_randomness = 0.5
+mesh = SubResource("SphereMesh_hilqq")
+emission_shape = 1
+emission_sphere_radius = 0.05
+gravity = Vector3(0, 1, 0)

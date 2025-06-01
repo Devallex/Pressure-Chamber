@@ -1,0 +1,123 @@
+[gd_scene load_steps=12 format=3 uid="uid://ctskqyaek0chk"]
+
+[ext_resource type="Script" uid="uid://bxmvhdna3l5gs" path="res://objects/chamber/chamber.gd" id="1_k4klk"]
+[ext_resource type="PackedScene" uid="uid://i16dniaw7tor" path="res://control/proximity_prompt/proximity_prompt.tscn" id="2_dtk57"]
+[ext_resource type="Material" uid="uid://cpyot4ma8g8v0" path="res://materials/glass.tres" id="2_sd1jp"]
+[ext_resource type="Material" uid="uid://d16dajk3wf54u" path="res://materials/metal/metal.tres" id="3_8tl60"]
+[ext_resource type="Script" uid="uid://c8b6xpmeap6ym" path="res://objects/chamber/chamber_atmosphere.gd" id="3_sd1jp"]
+[ext_resource type="PackedScene" uid="uid://c5ojwmpere5j7" path="res://objects/iigs/iigs.tscn" id="6_gpp55"]
+[ext_resource type="PackedScene" uid="uid://30qbupxhc0xk" path="res://objects/thermostat/thermostat.tscn" id="7_fvroe"]
+[ext_resource type="PackedScene" uid="uid://crq2tallbaue0" path="res://objects/chamber/chamber_ui.tscn" id="8_oecc6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibwah"]
+size = Vector3(4.8, 1.9, 2.3)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8tl60"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_oecc6"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[node name="Chamber" type="Node3D" node_paths=PackedStringArray("atmosphere", "target_atmosphere", "field")]
+script = ExtResource("1_k4klk")
+pressurize = true
+atmosphere = NodePath("PressureAtmosphere")
+target_atmosphere = NodePath("TargetAtmosphere")
+field = NodePath("Area3D")
+
+[node name="Floor" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(5, 0.1, 2.5)
+
+[node name="Roof" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+use_collision = true
+size = Vector3(5, 0.1, 2.5)
+
+[node name="DoorPrompt" parent="." instance=ExtResource("2_dtk57")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1, -1.212)
+action_text = "Open"
+
+[node name="PressurizePrompt" parent="." instance=ExtResource("2_dtk57")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.505395, 1, -1.212)
+action_text = "Pressurize"
+
+[node name="Door" type="CSGBox3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.25, -1.2)
+use_collision = true
+size = Vector3(1.307, 2.4, 0.1)
+material = ExtResource("3_8tl60")
+
+[node name="Glass" type="Node3D" parent="."]
+
+[node name="Glass1" type="CSGBox3D" parent="Glass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45, 1.25, 0)
+use_collision = true
+size = Vector3(0.1, 2.4, 2.5)
+material = ExtResource("2_sd1jp")
+
+[node name="Glass2" type="CSGBox3D" parent="Glass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45, 1.25, 0)
+use_collision = true
+size = Vector3(0.1, 2.4, 2.5)
+material = ExtResource("2_sd1jp")
+
+[node name="Glass3" type="CSGBox3D" parent="Glass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 1.2)
+use_collision = true
+size = Vector3(4.8, 2.4, 0.1)
+material = ExtResource("2_sd1jp")
+
+[node name="Glass4" type="CSGBox3D" parent="Glass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15, 1.25, -1.2)
+use_collision = true
+size = Vector3(2.5, 2.4, 0.1)
+material = ExtResource("2_sd1jp")
+
+[node name="Glass5" type="CSGBox3D" parent="Glass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 1.25, -1.2)
+use_collision = true
+size = Vector3(1, 2.4, 0.1)
+material = ExtResource("2_sd1jp")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_ibwah")
+
+[node name="PressureAtmosphere" type="Node3D" parent="."]
+transform = Transform3D(0.999781, -0.0188161, 0.00915178, 0.0186878, 0.999729, 0.0139114, -0.00941103, -0.0137373, 0.999861, 0, 0, 0)
+script = ExtResource("3_sd1jp")
+metadata/_custom_type_script = "uid://b87wyy63imfgw"
+
+[node name="TargetAtmosphere" type="Node3D" parent="."]
+transform = Transform3D(0.999781, -0.0188161, 0.00915178, 0.0186878, 0.999729, 0.0139114, -0.00941103, -0.0137373, 0.999861, 0, 0, 0)
+script = ExtResource("3_sd1jp")
+metadata/_custom_type_script = "uid://b87wyy63imfgw"
+
+[node name="CharacterReference" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.743334, 1.15061, -2.069)
+layers = 0
+mesh = SubResource("CapsuleMesh_8tl60")
+
+[node name="Iigs" parent="." instance=ExtResource("6_gpp55")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.791, 0, 0.265357)
+
+[node name="Thermostat" parent="." instance=ExtResource("7_fvroe")]
+unique_name_in_owner = true
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 2.52185, 1.5009, -0.764051)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.60637, 1.34168, -1.31935)
+pixel_size = 0.002
+no_depth_test = true
+texture = SubResource("ViewportTexture_oecc6")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+
+[node name="ChamberUi" parent="Sprite3D/SubViewport" node_paths=PackedStringArray("chamber") instance=ExtResource("8_oecc6")]
+chamber = NodePath("../../..")

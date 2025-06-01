@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://30qbupxhc0xk"]
+
+[ext_resource type="Material" uid="uid://d16dajk3wf54u" path="res://materials/metal/metal.tres" id="1_6kr1k"]
+[ext_resource type="Script" uid="uid://cq5ix7rhhaxb4" path="res://objects/thermostat/thermostat.gd" id="1_k6m70"]
+[ext_resource type="PackedScene" uid="uid://i16dniaw7tor" path="res://control/proximity_prompt/proximity_prompt.tscn" id="2_p300k"]
+[ext_resource type="PackedScene" uid="uid://syyjryypw341" path="res://control/dialogs/temperature_dialog/temperature_dialog.tscn" id="4_2oeaq"]
+
+[node name="Thermostat" type="Node3D"]
+script = ExtResource("1_k6m70")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.98023e-08, 1, 0, -1, 2.98023e-08, 0, 0, 0)
+radius = 0.2
+height = 0.05
+material = ExtResource("1_6kr1k")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.98023e-08, 1, 0, -1, 2.98023e-08, 0, 0, 0.01895)
+radius = 0.15
+height = 0.05
+sides = 16
+
+[node name="SetPrompt" parent="." instance=ExtResource("2_p300k")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.387837, 0)
+action_text = "Set"
+
+[node name="TemperatureDialog" parent="." instance=ExtResource("4_2oeaq")]
+unique_name_in_owner = true

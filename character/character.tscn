@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckhmfne3gpxof"]
+
+[ext_resource type="Script" uid="uid://ddhoq1q1ah0a2" path="res://character/character.gd" id="1_yf0e5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1tnas"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7h655"]
+
+[node name="Character" type="CharacterBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_yf0e5")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_1tnas")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.75, 2.08165e-12)
+
+[node name="Hold" type="Node3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -1, -2.5)
+visible = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Camera/Hold"]
+transparency = 0.5
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Body" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_7h655")
