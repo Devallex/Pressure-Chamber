@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Character extends CharacterBody3D
 
 var gravity = Vector3.DOWN * 12  # strength of gravity
 var base_speed = 4  # movement speed
@@ -6,6 +6,11 @@ var jump_speed = 6  # jump strength
 var spin = 0.05  # rotation speed
 var clamp_spin = 5
 var safe_positions = [Vector3(0, 5, 0)]
+
+static var current: Character
+
+var holding: Node3D
+var holding_original_parent: Node3D
 
 var max_camera_angle = deg_to_rad(75)
 
@@ -30,6 +35,22 @@ func rotateCameraX(a, b):
 			-max_camera_angle,
 			max_camera_angle
 		)
+
+func drop():
+	if not holding:
+		return
+	
+	%HoldViewport.remove_child(holding)
+	holding_original_parent.add_child(holding)
+	holding.global_transform = %Hold.global_transform
+	holding = null
+
+func hold(item: Node3D):
+	drop()
+	holding_original_parent = item.get_parent()
+	holding_original_parent.remove_child(item)
+	%HoldViewport.add_child(item)
+	holding = item
 
 func get_input(delta):
 	var vy = velocity.y
@@ -94,8 +115,16 @@ func _process(_delta):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	if holding:
+		holding.global_transform = Transform3D()
+		if Input.is_action_just_pressed("hold_interact"):
+			drop()
+
 
 func _ready():
+	current = self
+	ProximityPrompt.camera.queue_free()
 	ProximityPrompt.camera = $Camera
 
 var elapsed = 0

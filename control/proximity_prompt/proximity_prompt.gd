@@ -9,6 +9,7 @@ class_name ProximityPrompt extends Node3D
 @export var one_shot: bool = false ## If on, self-disables once triggered for the first time. Can be re-enabled by scripts.
 @export var camera_max_distance: float = 3.5 ## If the player is farther than this value, the prompt is unavailable.
 @export var billboard: BaseMaterial3D.BillboardMode = BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED ## How the prompt is oriented relative to the camera.
+@export var hide_mode: HIDE_MODE = HIDE_MODE.NEVER
 
 const SHRINK_FACTOR: float = 0.85
 
@@ -29,6 +30,12 @@ enum TRIGGER_STATE {
 	TRIGGERED
 }
 
+enum HIDE_MODE {
+	NEVER,
+	WHEN_DISABLED,
+	WHEN_FAR
+}
+
 var signals_for_states = {
 	TRIGGER_STATE.IDLE: stopped,
 	TRIGGER_STATE.STARTED: started,
@@ -37,7 +44,7 @@ var signals_for_states = {
 }
 
 # Only trigger one prompt when pressing inputs
-static var camera: Camera3D
+static var camera: Camera3D = Camera3D.new()
 static var all_prompts: Array[ProximityPrompt] = []
 static func getClosestPrompt(input_action: String):
 	if Globals.is_paused:
@@ -76,10 +83,19 @@ func _updateVisuals():
 	
 	if isClosest():
 		%Sprite3D.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		show()
 	else:
 		if disabled:
+			if hide_mode == HIDE_MODE.WHEN_DISABLED:
+				hide()
+			else:
+				show()
 			%Sprite3D.modulate = Color(1.0, 0.5, 0.5, 0.5)
 		else:
+			if hide_mode != HIDE_MODE.NEVER:
+				hide()
+			else:
+				show()
 			%Sprite3D.modulate = Color(1.0, 1.0, 1.0, 0.5)
 	
 	%Action.text = action_text

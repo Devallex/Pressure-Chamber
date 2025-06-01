@@ -1,23 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6hps28637svp"]
+[gd_scene load_steps=6 format=3 uid="uid://b6hps28637svp"]
 
+[ext_resource type="Environment" uid="uid://d2a2b26pn30cl" path="res://world_environment.tres" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b6npuf6rm5ayx" path="res://objects/ball.tscn" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ctskqyaek0chk" path="res://objects/chamber/chamber.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://bbih0mja6l6g" path="res://objects/bunsen_burner/bunsen_burner.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ckhmfne3gpxof" path="res://character/character.tscn" id="5_7jktm"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mwb40"]
-
-[sub_resource type="Sky" id="Sky_80nbo"]
-sky_material = SubResource("ProceduralSkyMaterial_mwb40")
-
-[sub_resource type="Environment" id="Environment_e2o6t"]
-background_mode = 2
-sky = SubResource("Sky_80nbo")
-
 [node name="Game" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_e2o6t")
+environment = ExtResource("1_7jktm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.960493, -0.0776816, -0.267243, 0.278304, 0.268098, 0.922318, 0, -0.960255, 0.279125, 0, 10, 0)
@@ -32,11 +24,10 @@ size = Vector3(10, 0.1, 10)
 
 [node name="Chamber" parent="." instance=ExtResource("3_feb5d")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.51233, 0.0447677, -2.03048)
-door_open = false
 pressurize = false
 
 [node name="Ball" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55303, 1.23595, -1.99363)
+transform = Transform3D(1, 0.000368585, -0.000113713, -0.000368614, 1, -0.000203936, 0.000113619, 0.000203988, 1, -2.55303, 1.23595, -1.99363)
 scalar_weight = 0.5
 
 [node name="Ball2" parent="." instance=ExtResource("3_fc0e3")]
