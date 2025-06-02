@@ -10,13 +10,13 @@ var focused_node: Node3D
 	#
 	#if new_focused_node
 
-func _input(event) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.pressed:
-				var ray = RayCast3D.new()
-				if focused_node and focused_node.has_method("click_down"):
-					focused_node.call_deferred("click_down")
-			else:
-				if focused_node and focused_node.has_method("click_up"):
-					focused_node.call_deferred("click_up")
+#func _input(event) -> void:
+	#if event is InputEventMouseButton:
+		#if event.button_index == MOUSE_BUTTON_LEFT:
+			#if event.pressed:
+				#var ray = RayCast3D.new()
+				#if focused_node and focused_node.has_method("click_down"):
+					#focused_node.call_deferred("click_down")
+			#else:
+				#if focused_node and focused_node.has_method("click_up"):
+					#focused_node.call_deferred("click_up")

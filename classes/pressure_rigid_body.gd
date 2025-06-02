@@ -1,5 +1,8 @@
 class_name PressureRigidBody extends PressureBody
 
+@export var min_size: float = 0.1
+@export var max_size: float = 2
+
 @onready var collision_shape: CollisionShape3D = %CollisionShape3D
 @onready var csg_sphere: CSGSphere3D = %CSGSphere3D
 
@@ -26,6 +29,7 @@ func _ready():
 
 
 func _affect_size(size: float):
+	size = clampf(size, min_size,max_size)
 	var radius: float = size / 2
 	collision_shape.shape.radius = radius
 	csg_sphere.radius = radius
