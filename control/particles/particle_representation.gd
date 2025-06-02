@@ -36,7 +36,6 @@ func create_and_remove_particles():
 		var particles_by_gas: Array = particles_by_gases[gas]
 		
 		var particles_until_full = gas_particle_count - len(particles_by_gas)
-		print(particles_until_full)
 		
 		while particles_until_full != 0:
 			if particles_until_full > 0:
@@ -59,7 +58,6 @@ func create_and_remove_particles():
 		
 		for particle: Particle in particles_by_gas:
 			particle.radius = particle_radius
-			print(particle_radius)
 
 var base_positions: Dictionary[StaticBody2D, Vector2]
 func _ready() -> void:

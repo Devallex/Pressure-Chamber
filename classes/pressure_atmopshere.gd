@@ -25,6 +25,5 @@ func _update_pressure() -> void:
 	#else:
 	if mol_sum == 0.0:
 			
-		# print("MOL_SUM: ", mol_sum)
 		pass
 	pressure = mol_sum  * 0.0821 * temperature / volume

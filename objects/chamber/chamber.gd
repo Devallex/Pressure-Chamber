@@ -15,7 +15,6 @@ func _ready() -> void:
 	volume = size.x * size.y * size.z * 1000.0
 	
 	field.body_entered.connect(func(body: Node3D):
-		print(body)
 		if not body is PressureBody:
 			return
 		if not body in bodies:
@@ -50,7 +49,6 @@ func _process(delta: float) -> void:
 	target_atmosphere.temperature = %Thermostat.set_temperature
 	target_atmosphere.gases = %Iigs.gases
 	target_atmosphere.volume = volume
-	print(target_atmosphere.pressure)
 
 	%DoorPrompt.disabled = not balanced
 	%PressurizePrompt.disabled = door_open
