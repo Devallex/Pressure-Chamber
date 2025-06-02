@@ -15,19 +15,19 @@ func _ready() -> void:
 	volume = size.x * size.y * size.z * 1000.0
 	
 	field.body_entered.connect(func(body: Node3D):
-		if not body is PressureBody:
+		if not body.get("atmosphere"):
 			return
-		if not body in bodies:
-			bodies.append(body)
-			body.atmosphere = atmosphere
+		if not body.atmosphere in bodies:
+			bodies.append(body.atmosphere)
+			body.atmosphere.atmosphere = atmosphere
 	)
 	field.body_exited.connect(func(body: Node3D):
-		if not body is PressureBody:
+		if not body.get("atmosphere"):
 			return
-		if not body in bodies:
+		if not body.atmosphere in bodies:
 			return
-		bodies.remove_at(bodies.find(body))
-		body.atmosphere = atmosphere.atmosphere
+		bodies.remove_at(bodies.find(body.atmosphere))
+		body.atmosphere.atmosphere = atmosphere.atmosphere
 	)
 	
 	%PressurizePrompt.triggered.connect(func():

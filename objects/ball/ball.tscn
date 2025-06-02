@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6npuf6rm5ayx"]
+
+[ext_resource type="Script" uid="uid://dstbgyhnv2mkc" path="res://objects/ball/ball.gd" id="1_ct1s3"]
+[ext_resource type="Script" uid="uid://cjwfj2chw3pw4" path="res://objects/ball/rigid_body_3d.gd" id="2_sqa05"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5oij1"]
+resource_local_to_scene = true
+
+[node name="Ball" type="Node3D"]
+script = ExtResource("1_ct1s3")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." node_paths=PackedStringArray("atmosphere")]
+unique_name_in_owner = true
+script = ExtResource("2_sqa05")
+atmosphere = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+unique_name_in_owner = true
+shape = SubResource("SphereShape3D_5oij1")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="RigidBody3D"]
+unique_name_in_owner = true
