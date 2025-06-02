@@ -12,7 +12,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6fa0k")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="NotFound" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Atmosphere not found!
+Please connect something you can fill with gas!"
+
+[node name="MainUI" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,27 +32,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Gases" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
+[node name="Gases" type="VBoxContainer" parent="MainUI/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
 
-[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="MainUI/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Particles" type="SubViewportContainer" parent="HBoxContainer/VBoxContainer/Panel"]
+[node name="Particles" type="SubViewportContainer" parent="MainUI/VBoxContainer/Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -51,7 +63,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="HBoxContainer/VBoxContainer/Panel/Particles"]
+[node name="SubViewport" type="SubViewport" parent="MainUI/VBoxContainer/Panel/Particles"]
 unique_name_in_owner = true
 disable_3d = true
 transparent_bg = true
@@ -59,10 +71,10 @@ handle_input_locally = false
 size = Vector2i(689, 585)
 render_target_update_mode = 4
 
-[node name="ParticleRepresentation" parent="HBoxContainer/VBoxContainer/Panel/Particles/SubViewport" instance=ExtResource("1_37lkh")]
+[node name="ParticleRepresentation" parent="MainUI/VBoxContainer/Panel/Particles/SubViewport" instance=ExtResource("1_37lkh")]
 unique_name_in_owner = true
 
-[node name="ParticleCount" type="HSlider" parent="HBoxContainer/VBoxContainer"]
+[node name="ParticleCount" type="HSlider" parent="MainUI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
