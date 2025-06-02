@@ -25,7 +25,7 @@ func _ready():
 	)
 	gases[Gases.get_by_symbol("He")] = 0.05
 	
-	add_child(prompt)
+	%RigidBody3D.add_child(prompt)
 
 
 func _affect_size(size: float):
@@ -40,4 +40,10 @@ func _process(delta: float) -> void:
 	
 	if Character.current:
 		prompt.disabled = Character.current.holding != null
-	
+		if Character.current.holding == self:
+			_while_held()
+
+func _while_held():
+	%RigidBody3D.transform = Transform3D()
+	%RigidBody3D.linear_velocity = Vector3.ZERO
+	%RigidBody3D.angular_velocity = Vector3.ZERO

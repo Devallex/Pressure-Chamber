@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6hps28637svp"]
+[gd_scene load_steps=7 format=3 uid="uid://b6hps28637svp"]
 
 [ext_resource type="Environment" uid="uid://d2a2b26pn30cl" path="res://world_environment.tres" id="1_7jktm"]
+[ext_resource type="PackedScene" uid="uid://b6npuf6rm5ayx" path="res://objects/ball/ball.tscn" id="3_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://kghv7hxl5taw" path="res://control/top_left/top_left.tscn" id="1_ryrav"]
 [ext_resource type="PackedScene" uid="uid://b6npuf6rm5ayx" path="res://objects/ball.tscn" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ctskqyaek0chk" path="res://objects/chamber/chamber.tscn" id="3_feb5d"]
 [ext_resource type="PackedScene" uid="uid://bbih0mja6l6g" path="res://objects/bunsen_burner/bunsen_burner.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ckhmfne3gpxof" path="res://character/character.tscn" id="5_7jktm"]
+[ext_resource type="PackedScene" uid="uid://tkj3qcb350w4" path="res://objects/filler/filler.tscn" id="6_ryrav"]
 
 [node name="Game" type="Node3D"]
+
+[node name="TopLeft" parent="." instance=ExtResource("1_ryrav")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_7jktm")
@@ -28,23 +33,18 @@ pressurize = false
 
 [node name="Ball" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(1, 0.000368585, -0.000113713, -0.000368614, 1, -0.000203936, 0.000113619, 0.000203988, 1, -2.55303, 1.23595, -1.99363)
-scalar_weight = 0.5
 
 [node name="Ball2" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55557, 0.506296, -1.99363)
-scalar_weight = 0.5
 
 [node name="Ball4" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46268, 0.696478, -1.99363)
-scalar_weight = 0.5
 
 [node name="Ball6" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457716, 0.516226, -1.99363)
-scalar_weight = 0.5
 
 [node name="Ball7" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.403851, 1.00696, -1.42012)
-scalar_weight = 0.5
 
 [node name="Ball8" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, -0.188359, 1.75613, -2.27303)
@@ -54,3 +54,6 @@ transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, 
 
 [node name="BunsenBurner" parent="." instance=ExtResource("4_fc0e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.78628, 0.00104, 0.346609)
+
+[node name="Filler" parent="." instance=ExtResource("6_ryrav")]
+transform = Transform3D(-0.984644, 0, 0.174576, 0, 1, 0, -0.174576, 0, -0.984644, -3.26276, 0.0146366, 4.00894)

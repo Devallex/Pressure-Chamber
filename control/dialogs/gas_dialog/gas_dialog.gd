@@ -1,6 +1,10 @@
 extends Control
 
+@export var found: bool = true
+
 func _process(delta: float) -> void:
+	%NotFound.visible = not found
+	%MainUI.visible = found
 	%SubViewport.size_2d_override = %Particles.size
 	
 var gases: Dictionary[Gas, float]
