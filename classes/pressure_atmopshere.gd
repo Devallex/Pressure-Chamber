@@ -5,7 +5,7 @@ class_name PressureAtmosphere extends Node3D
 @export var temperature: float = 273.15
 @export var volume: float = 1.0
 
-@export var gasses: Dictionary[Gas, float] = {}
+@export var gases: Dictionary[Gas, float] = {}
 
 func _ready() -> void:
 	add_to_group("presusre_atmosphere")
@@ -15,8 +15,8 @@ func _process(_delta: float) -> void:
 
 func _update_pressure() -> void:
 	var mol_sum = 0.0
-	for gas: Gas in gasses.keys():
-		var moles = gasses[gas]
+	for gas: Gas in gases.keys():
+		var moles = gases[gas]
 		mol_sum += moles
 	
 	# P = nRT/V
@@ -25,5 +25,6 @@ func _update_pressure() -> void:
 	#else:
 	if mol_sum == 0.0:
 			
-		print("MOL_SUM: ", mol_sum)
+		# print("MOL_SUM: ", mol_sum)
+		pass
 	pressure = mol_sum  * 0.0821 * temperature / volume

@@ -54,3 +54,42 @@ mesh = SubResource("SphereMesh_hilqq")
 emission_shape = 1
 emission_sphere_radius = 0.05
 gravity = Vector3(0, 1, 0)
+
+[node name="Rail" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.75, -0.05)
+use_collision = true
+radius = 0.01
+height = 0.8
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.75, 0.05)
+use_collision = true
+radius = 0.01
+height = 0.8
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.85, 0.25)
+use_collision = true
+radius = 0.01
+height = 0.8
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.85, -0.25)
+use_collision = true
+radius = 0.01
+height = 0.8
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.4, 0.85, 0)
+use_collision = true
+radius = 0.01
+height = 0.51
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.4, 0.85, 0)
+use_collision = true
+radius = 0.01
+height = 0.51

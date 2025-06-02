@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctskqyaek0chk"]
+[gd_scene load_steps=13 format=3 uid="uid://ctskqyaek0chk"]
 
 [ext_resource type="Script" uid="uid://bxmvhdna3l5gs" path="res://objects/chamber/chamber.gd" id="1_k4klk"]
 [ext_resource type="PackedScene" uid="uid://i16dniaw7tor" path="res://control/proximity_prompt/proximity_prompt.tscn" id="2_dtk57"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://d16dajk3wf54u" path="res://materials/metal/metal.tres" id="3_8tl60"]
 [ext_resource type="Script" uid="uid://c8b6xpmeap6ym" path="res://objects/chamber/chamber_atmosphere.gd" id="3_sd1jp"]
 [ext_resource type="PackedScene" uid="uid://c5ojwmpere5j7" path="res://objects/iigs/iigs.tscn" id="6_gpp55"]
+[ext_resource type="Script" uid="uid://d042bj7tpnxuo" path="res://objects/chamber/target_atmosphere.gd" id="6_iem5b"]
 [ext_resource type="PackedScene" uid="uid://30qbupxhc0xk" path="res://objects/thermostat/thermostat.tscn" id="7_fvroe"]
 [ext_resource type="PackedScene" uid="uid://crq2tallbaue0" path="res://objects/chamber/chamber_ui.tscn" id="8_oecc6"]
 
@@ -22,7 +23,7 @@ script = ExtResource("1_k4klk")
 pressurize = true
 atmosphere = NodePath("PressureAtmosphere")
 target_atmosphere = NodePath("TargetAtmosphere")
-field = NodePath("Area3D")
+field = NodePath("Area")
 
 [node name="Floor" type="CSGBox3D" parent="."]
 use_collision = true
@@ -82,9 +83,11 @@ use_collision = true
 size = Vector3(1, 2.4, 0.1)
 material = ExtResource("2_sd1jp")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area" type="Area3D" parent="."]
+unique_name_in_owner = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_ibwah")
 
@@ -95,7 +98,7 @@ metadata/_custom_type_script = "uid://b87wyy63imfgw"
 
 [node name="TargetAtmosphere" type="Node3D" parent="."]
 transform = Transform3D(0.999781, -0.0188161, 0.00915178, 0.0186878, 0.999729, 0.0139114, -0.00941103, -0.0137373, 0.999861, 0, 0, 0)
-script = ExtResource("3_sd1jp")
+script = ExtResource("6_iem5b")
 metadata/_custom_type_script = "uid://b87wyy63imfgw"
 
 [node name="CharacterReference" type="CSGMesh3D" parent="."]
@@ -104,6 +107,7 @@ layers = 0
 mesh = SubResource("CapsuleMesh_8tl60")
 
 [node name="Iigs" parent="." instance=ExtResource("6_gpp55")]
+unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.791, 0, 0.265357)
 
 [node name="Thermostat" parent="." instance=ExtResource("7_fvroe")]

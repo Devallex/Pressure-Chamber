@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 Globals="*res://globals.gd"
 GlobalAtmosphere="*res://classes/global_atmosphere.gd"
 Mouse="*res://classes/mouse.gd"
-Gasses="*res://gasses/gasses.gd"
+Gases="*res://gasses/gases.gd"
 Dialog="*res://control/dialog.gd"
 
 [display]

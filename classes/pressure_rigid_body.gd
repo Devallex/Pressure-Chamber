@@ -14,18 +14,16 @@ func _ready():
 	prompt.action_text = "Grab"
 	prompt.disabled = true
 	prompt.activation_time = 0.25
+	prompt.camera_max_distance = 2.0
 	prompt.hide_mode = ProximityPrompt.HIDE_MODE.WHEN_DISABLED
 	prompt.triggered.connect(func():
 		if Character.current:
 			Character.current.hold(self)
 	)
-	add_child(prompt)
+	gases[Gases.get_by_symbol("He")] = 0.05
 	
-	gasses[Gas.new({
-		"symbol": "?",
-		"name": "Test",
-		"atomic_mass": 1
-	})] = 0.05
+	add_child(prompt)
+
 
 func _affect_size(size: float):
 	var radius: float = size / 2

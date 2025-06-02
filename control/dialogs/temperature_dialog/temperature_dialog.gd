@@ -7,6 +7,11 @@ extends VBoxContainer
 @onready var slider := %Slider
 @onready var label := %Label
 
+func _ready() -> void:
+	slider.min_value = min_temperature
+	slider.max_value = max_temperature
+	slider.value = set_temperature
+
 func _process(delta: float) -> void:
 	slider.min_value = min_temperature
 	slider.max_value = max_temperature

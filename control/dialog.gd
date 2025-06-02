@@ -6,6 +6,8 @@ var current_dialog: Control
 func hide_dialog():
 	if current_dialog:
 		current_dialog.hide()
+		if current_dialog.has_method("dialog_hidden"):
+			current_dialog.call_deferred("dialog_hidden")
 		current_dialog = null
 		in_dialog = false
 		hide()
@@ -14,6 +16,8 @@ func show_dialog(dialog: Control):
 	hide_dialog()
 	current_dialog = dialog
 	current_dialog.show()
+	if dialog.has_method("dialog_shown"):
+		dialog.call_deferred("dialog_shown")
 	var parent: Node = dialog.get_parent()
 	if parent != self:
 		parent.remove_child(dialog)
@@ -27,6 +31,8 @@ func _process(delta: float) -> void:
 
 func bind_dialog(prompt: ProximityPrompt, dialog: Control):
 	dialog.hide()
+	if dialog.has_method("dialog_hidden"):
+		dialog.call_deferred("dialog_hidden")
 	prompt.triggered.connect(func():
 		if current_dialog == dialog:
 			hide_dialog()

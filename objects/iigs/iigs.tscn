@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5ojwmpere5j7"]
+[gd_scene load_steps=10 format=3 uid="uid://c5ojwmpere5j7"]
 
+[ext_resource type="Script" uid="uid://bqq1drnjf7pvp" path="res://objects/iigs/iigs.gd" id="1_qn5qr"]
 [ext_resource type="Material" uid="uid://d16dajk3wf54u" path="res://materials/metal/metal.tres" id="2_qfyay"]
 [ext_resource type="Material" uid="uid://cpyot4ma8g8v0" path="res://materials/glass.tres" id="3_dunpi"]
 [ext_resource type="PackedScene" uid="uid://i16dniaw7tor" path="res://control/proximity_prompt/proximity_prompt.tscn" id="3_qn5qr"]
+[ext_resource type="PackedScene" uid="uid://bj4kvrgu6bfo5" path="res://control/dialogs/gas_dialog/gas_dialog.tscn" id="5_5x37i"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dunpi"]
 viewport_path = NodePath("CSGMesh3D/SubViewport")
@@ -21,6 +23,7 @@ font_size = 60
 font_color = Color(0, 0.858824, 0.0980392, 1)
 
 [node name="Iigs" type="Node3D"]
+script = ExtResource("1_qn5qr")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0239883, 0.5, 0.0326932)
@@ -86,5 +89,9 @@ height = 0.9
 sides = 16
 
 [node name="ProximityPrompt" parent="." instance=ExtResource("3_qn5qr")]
+unique_name_in_owner = true
 transform = Transform3D(0.999998, -0.000434916, 0.00184964, -0.00055103, 0.865242, 0.501353, -0.00181843, -0.501353, 0.865241, -8.14968e-06, 1.09557, -0.00939462)
 action_text = "Interact"
+
+[node name="GasDialog" parent="." instance=ExtResource("5_5x37i")]
+unique_name_in_owner = true

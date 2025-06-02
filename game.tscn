@@ -34,10 +34,6 @@ scalar_weight = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55557, 0.506296, -1.99363)
 scalar_weight = 0.5
 
-[node name="Ball3" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.606335, 4.58793, -2.00396)
-scalar_weight = 0.5
-
 [node name="Ball4" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46268, 0.696478, -1.99363)
 scalar_weight = 0.5
@@ -51,7 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.403851, 1.00696, -1.42012)
 scalar_weight = 0.5
 
 [node name="Ball8" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, -0.188359, 1.31695, -1.11884)
+transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, -0.188359, 1.75613, -2.27303)
 
 [node name="Ball9" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, -0.486226, 0.516226, -1.62764)

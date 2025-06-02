@@ -8,13 +8,13 @@ extends Node3D
 @onready var dialog := %TemperatureDialog
 
 func _ready() -> void:
+	dialog.min_temperature = min_temperature
+	dialog.max_temperature = max_temperature
+	dialog.set_temperature = set_temperature
+	
 	Dialog.bind_dialog(prompt, dialog)
-	_update()
 
 func _process(delta: float) -> void:
-	_update()
-	
-func _update() -> void:
 	dialog.min_temperature = min_temperature
 	dialog.max_temperature = max_temperature
 	set_temperature = dialog.set_temperature
