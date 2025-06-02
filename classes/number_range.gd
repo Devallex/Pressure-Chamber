@@ -9,3 +9,4 @@ func _init(_min: float, _max: float) -> void:
 
 func lerp(weight: float) -> float:
 	return lerpf(min, max, weight)
+# TODO: "Will refactor later" - Alex
