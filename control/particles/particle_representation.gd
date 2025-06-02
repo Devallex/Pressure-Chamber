@@ -66,10 +66,12 @@ func _ready() -> void:
 	for border: StaticBody2D in [%Top, %Left, %Bottom, %Right]:
 		base_positions[border] = border.position
 		border.position = base_positions[border] * get_viewport_rect().size
+		
+	get_viewport().size_changed.connect(func (): 
+		for border: StaticBody2D in [%Top, %Left, %Bottom, %Right]:
+			border.position = base_positions[border] * get_viewport_rect().size
+		)
 
-func _process(delta: float) -> void:
-	for border: StaticBody2D in [%Top, %Left, %Bottom, %Right]:
-		border.position = base_positions[border] * get_viewport_rect().size
 
 func set_frozen(frozen: bool):
 	for particle: Particle in all_particles:
