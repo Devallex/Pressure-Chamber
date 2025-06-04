@@ -40,7 +40,14 @@ func bind_dialog(prompt: ProximityPrompt, dialog: Control):
 			show_dialog(dialog)
 	)
 
+func toggle_dialog(dialog: Control):
+	if current_dialog == dialog:
+		hide_dialog()
+	else:
+		show_dialog(dialog)
+
 func _ready() -> void:
+	mouse_filter = Control.MOUSE_FILTER_PASS
 	hide()
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	set_anchor_and_offset(SIDE_LEFT, 0.2, 0)

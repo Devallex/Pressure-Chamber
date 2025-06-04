@@ -4,17 +4,25 @@
 
 [node name="TopLeft" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_mmi7v")
 
-[node name="FPS" type="Label" parent="."]
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="Help" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Press H for controls!"
+
+[node name="FPS" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 2
 mouse_filter = 1
