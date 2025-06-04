@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb4ajt0maihb6"]
+
+[ext_resource type="Script" uid="uid://io080ysldd0n" path="res://control/pause_menu/pause_menu.gd" id="1_x6y50"]
+
+[node name="PauseMenu" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_x6y50")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+bbcode_enabled = true
+text = "le baloncesto"
