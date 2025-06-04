@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://1cr8cam51ax7"]
+[gd_scene load_steps=2 format=3 uid="uid://1cr8cam51ax7"]
+
+[ext_resource type="Script" uid="uid://cvwjeknfq8tdk" path="res://control/manual/manual.gd" id="1_o1qby"]
 
 [node name="Manual" type="Control"]
 layout_mode = 3
@@ -7,3 +9,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_o1qby")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[font_size=24][center]Instruction Manual[/center]
+[font_size=14] - Start at the Infinite Inert Gas Supply on the chamber, and hold E to open it.
+ - Select the molar quantities of the gas(es) you want using the sliders on the left.
+ - You can increace the amount of particles shown in the particle representation by using the slider on the bottom.
+ - You can change the tempurature by using the thermostat on the right of the Infinite Inert Gas Supply.
+ - Then, use F to hit the pressurise button on the right side, and the chamber will pressurize.
+ - You can depressurize/open the container by using F on the \"Open\" button next to the pressurize button.
+ - You can grab a balloon from the chamber and place it in the tray on the side, and use the second Infinite Inert Gas Supply to change the amount of molecules in the balloon.
+"

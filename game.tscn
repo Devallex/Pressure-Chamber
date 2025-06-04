@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6hps28637svp"]
+[gd_scene load_steps=10 format=3 uid="uid://b6hps28637svp"]
 
 [ext_resource type="Environment" uid="uid://d2a2b26pn30cl" path="res://world_environment.tres" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://kghv7hxl5taw" path="res://control/top_left/top_left.tscn" id="1_ryrav"]
 [ext_resource type="PackedScene" uid="uid://dtsuc6junuvgv" path="res://control/dialogs/help/help.tscn" id="2_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://b6npuf6rm5ayx" path="res://objects/ball/ball.tscn" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ctskqyaek0chk" path="res://objects/chamber/chamber.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://1cr8cam51ax7" path="res://control/manual/manual.tscn" id="3_vef74"]
 [ext_resource type="PackedScene" uid="uid://bbih0mja6l6g" path="res://objects/bunsen_burner/bunsen_burner.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ckhmfne3gpxof" path="res://character/character.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://tkj3qcb350w4" path="res://objects/filler/filler.tscn" id="6_ryrav"]
@@ -14,6 +15,9 @@
 [node name="TopLeft" parent="." instance=ExtResource("1_ryrav")]
 
 [node name="Controls" parent="." instance=ExtResource("2_j5wjh")]
+visible = false
+
+[node name="Manual" parent="." instance=ExtResource("3_vef74")]
 visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
