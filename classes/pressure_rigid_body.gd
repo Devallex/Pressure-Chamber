@@ -42,6 +42,11 @@ func _process(delta: float) -> void:
 		prompt.disabled = Character.current.holding != null
 		if Character.current.holding == self:
 			_while_held()
+	
+	if %RigidBody3D.global_position.y <= -50.0:
+		%RigidBody3D.global_transform = Transform3D().translated(Vector3(0.0, 10.0, 0.0))
+		%RigidBody3D.linear_velocity = Vector3.ZERO
+		%RigidBody3D.angular_velocity = Vector3.ZERO
 
 func _while_held():
 	%RigidBody3D.transform = Transform3D()

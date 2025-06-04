@@ -18,11 +18,19 @@ layout_mode = 2
 mouse_filter = 1
 text = "Gas Name"
 
-[node name="Moles" type="Label" parent="."]
+[node name="Moles" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-mouse_filter = 1
-text = "n Moles"
+
+[node name="WrittenAmount" type="LineEdit" parent="Moles"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "0.0"
+expand_to_text_length = true
+
+[node name="Label" type="Label" parent="Moles"]
+layout_mode = 2
+text = "Moles"
 
 [node name="Amount" type="HSlider" parent="."]
 unique_name_in_owner = true

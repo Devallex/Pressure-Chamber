@@ -13,7 +13,7 @@ func _affect_size(size: float):
 
 func _calculate_scalar() -> float:
 	var pressure_difference: float = pressure / max(0.01, atmosphere.pressure)
-	var scalar = scalar_weight * (pressure_difference - 1) + 1
+	var scalar = 1e-1 * scalar_weight * (pressure_difference - 1.0) + 1
 	return scalar
 
 func _process(delta: float) -> void:
