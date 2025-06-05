@@ -3,6 +3,8 @@ extends Panel
 var in_dialog: bool = false
 var current_dialog: Control
 
+var dialog_parent: Control
+
 func hide_dialog():
 	if current_dialog:
 		current_dialog.hide()
@@ -21,7 +23,7 @@ func show_dialog(dialog: Control):
 	var parent: Node = dialog.get_parent()
 	if parent != self:
 		parent.remove_child(dialog)
-		add_child(dialog)
+		dialog_parent.add_child(dialog)
 	in_dialog = true
 	show()
 
@@ -47,6 +49,10 @@ func toggle_dialog(dialog: Control):
 		show_dialog(dialog)
 
 func _ready() -> void:
+	theme = load("res://control/theme.tres")
+	dialog_parent = MarginContainer.new()
+	dialog_parent.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(dialog_parent)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 	hide()
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
