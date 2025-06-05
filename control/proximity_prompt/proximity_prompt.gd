@@ -102,6 +102,22 @@ func _updateVisuals():
 	
 	#%Sprite3D.billboard = billboard
 	#%Key.text = input_action
+	if OS.has_feature("mobile") and isClosest():
+		var mobile_ui = get_tree().get_first_node_in_group("mobile_ui")
+		if mobile_ui:
+			if input_action == "primary_interact":
+				mobile_ui.primary_button.modulate = Color.GREEN
+			elif input_action == "secondary_interact": 
+				mobile_ui.secondary_button.modulate = Color.GREEN
+			elif input_action == "hold_interact":
+				mobile_ui.grab_button.modulate = Color.GREEN
+	else:
+		# Reset button colors when not closest
+		var mobile_ui = get_tree().get_first_node_in_group("mobile_ui")
+		if mobile_ui:
+			mobile_ui.primary_button.modulate = Color.WHITE
+			mobile_ui.secondary_button.modulate = Color.WHITE
+			mobile_ui.grab_button.modulate = Color.WHITE
 
 func getCompletion() -> float:
 	return time_activated / max(activation_time, 0.001)

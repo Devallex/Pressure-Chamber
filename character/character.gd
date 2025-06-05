@@ -1,5 +1,7 @@
 class_name Character extends CharacterBody3D
 
+var mobile_ui: MobileUI
+
 var gravity = Vector3.DOWN * 12  # strength of gravity
 var base_speed = 4  # movement speed
 var jump_speed = 6  # jump strength
@@ -58,22 +60,29 @@ func get_input(delta):
 	var actual_speed = base_speed
 	var currentHeight = $CollisionShape.shape.height
 	if is_controlling_character():
+		if mobile_ui and OS.has_feature("mobile"):
+			var mobile_movement = mobile_ui.movement_direction
+			if mobile_movement != Vector2.ZERO:
+				velocity += -actual_speed * transform.basis.z * mobile_movement.y
+				velocity += actual_speed * transform.basis.x * mobile_movement.x
+		else:
+			if Input.is_action_pressed("move_forward"):
+				velocity += -actual_speed * transform.basis.z
+			if Input.is_action_pressed("move_back"):
+				velocity += actual_speed * transform.basis.z
+			if Input.is_action_pressed("move_right"):
+				velocity += actual_speed * transform.basis.x
+			if Input.is_action_pressed("move_left"):
+				velocity += -actual_speed * transform.basis.x
 		if Input.is_action_pressed("sprint"):
-			actual_speed *= 2.5
-		if Input.is_action_pressed("move_forward"):
-			velocity += -actual_speed * transform.basis.z
-		if Input.is_action_pressed("move_back"):
-			velocity += actual_speed * transform.basis.z
-		if Input.is_action_pressed("move_right"):
-			velocity += actual_speed * transform.basis.x
-		if Input.is_action_pressed("move_left"):
-			velocity += -actual_speed * transform.basis.x
+				actual_speed *= 2.5
 		if Input.is_action_pressed("crouch"):
-			$CollisionShape.shape.height = lerp(currentHeight, 1.0, min(1.0, delta * CROUCH_SPEED))
+				$CollisionShape.shape.height = lerp(currentHeight, 1.0, min(1.0, delta * CROUCH_SPEED))
 		else:
 			$CollisionShape.shape.height = lerp(currentHeight, 2.0, min(1.0, delta * CROUCH_SPEED))
 		if is_on_floor() and Input.is_action_pressed("jump") and currentHeight > 1.95:
-			vy += jump_speed
+				vy += jump_speed
+	
 	if velocity == Vector3.ZERO and vy < 0 and is_on_floor() and safe_positions[-1] != position and position.y > 0:
 		safe_positions.append(position)
 		if len(safe_positions) > 5:
@@ -81,6 +90,7 @@ func get_input(delta):
 	velocity.y = vy
 	
 	# Camera panning keys
+	
 	if is_controlling_character():
 		var turn_left = Input.is_action_pressed("turn_left")
 		var turn_right = Input.is_action_pressed("turn_right")
@@ -96,8 +106,17 @@ func get_input(delta):
 				rotateCameraX(spin, -0.25)
 			elif look_down:
 				rotateCameraX(spin, 0.25)
+	if mobile_ui and OS.has_feature("mobile") and is_controlling_character():
+		var camera_input = mobile_ui.camera_direction
+		if camera_input != Vector2.ZERO:
+			# Apply camera movement
+			rotate_y(-camera_input.x * 0.02)
+			rotateCameraX(0.02, camera_input.y)
 
 func _unhandled_input(event):
+	if OS.has_feature("mobile"):
+		return
+	
 	if event is InputEventMouseMotion and is_controlling_character():
 		moveMouse(event.relative)
 
@@ -112,7 +131,10 @@ func moveMouse(relative: Vector2):
 
 func _process(_delta):
 	if is_controlling_character():
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		if OS.has_feature("mobile"):
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
@@ -120,6 +142,13 @@ func _process(_delta):
 		holding.global_transform = Transform3D()
 		if Input.is_action_just_pressed("hold_interact"):
 			drop()
+	
+	if mobile_ui and OS.has_feature("mobile") and is_controlling_character():
+		var camera_input = mobile_ui.camera_direction
+		if camera_input != Vector2.ZERO:
+			# Apply camera movement
+			rotate_y(-camera_input.x * 0.02)
+			rotateCameraX(0.02, camera_input.y)
 
 
 func _ready():
