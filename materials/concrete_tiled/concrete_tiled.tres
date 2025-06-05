@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://b7subp0g5yhel"]
+
+[ext_resource type="Texture2D" uid="uid://ckv8t68yjnox5" path="res://materials/concrete_tiled/Concrete031_2K-PNG_Color.png" id="1_pi47e"]
+[ext_resource type="Texture2D" uid="uid://dwrnhds8kjqgs" path="res://materials/concrete_tiled/Concrete031_2K-PNG_AmbientOcclusion.png" id="2_f74qn"]
+[ext_resource type="Texture2D" uid="uid://dr8c7fkva2ce3" path="res://materials/concrete_tiled/Concrete031_2K-PNG_Displacement.png" id="3_5pnm4"]
+[ext_resource type="Texture2D" uid="uid://do1y41xmbx66o" path="res://materials/concrete_tiled/Concrete031_2K-PNG_NormalGL.png" id="4_5pnm4"]
+[ext_resource type="Texture2D" uid="uid://bfa8j0l680oe6" path="res://materials/concrete_tiled/Concrete031_2K-PNG_Roughness.png" id="5_x86lv"]
+
+[resource]
+albedo_texture = ExtResource("1_pi47e")
+roughness_texture = ExtResource("5_x86lv")
+normal_enabled = true
+normal_texture = ExtResource("4_5pnm4")
+ao_enabled = true
+ao_texture = ExtResource("2_f74qn")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_5pnm4")
+uv1_triplanar = true

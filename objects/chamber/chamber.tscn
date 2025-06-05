@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctskqyaek0chk"]
+[gd_scene load_steps=14 format=3 uid="uid://ctskqyaek0chk"]
 
 [ext_resource type="Script" uid="uid://bxmvhdna3l5gs" path="res://objects/chamber/chamber.gd" id="1_k4klk"]
 [ext_resource type="PackedScene" uid="uid://i16dniaw7tor" path="res://control/proximity_prompt/proximity_prompt.tscn" id="2_dtk57"]
 [ext_resource type="Material" uid="uid://cpyot4ma8g8v0" path="res://materials/glass.tres" id="2_sd1jp"]
 [ext_resource type="Material" uid="uid://d16dajk3wf54u" path="res://materials/metal/metal.tres" id="3_8tl60"]
 [ext_resource type="Script" uid="uid://c8b6xpmeap6ym" path="res://objects/chamber/chamber_atmosphere.gd" id="3_sd1jp"]
+[ext_resource type="Material" uid="uid://bmi7g32xwiosg" path="res://materials/metal/metal_dark.tres" id="4_6w053"]
 [ext_resource type="PackedScene" uid="uid://c5ojwmpere5j7" path="res://objects/iigs/iigs.tscn" id="6_gpp55"]
 [ext_resource type="Script" uid="uid://d042bj7tpnxuo" path="res://objects/chamber/target_atmosphere.gd" id="6_iem5b"]
 [ext_resource type="PackedScene" uid="uid://30qbupxhc0xk" path="res://objects/thermostat/thermostat.tscn" id="7_fvroe"]
@@ -28,11 +29,13 @@ field = NodePath("Area")
 [node name="Floor" type="CSGBox3D" parent="."]
 use_collision = true
 size = Vector3(5, 0.1, 2.5)
+material = ExtResource("3_8tl60")
 
 [node name="Roof" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 use_collision = true
 size = Vector3(5, 0.1, 2.5)
+material = ExtResource("3_8tl60")
 
 [node name="DoorPrompt" parent="." instance=ExtResource("2_dtk57")]
 unique_name_in_owner = true
@@ -49,7 +52,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.25, -1.2)
 use_collision = true
 size = Vector3(1.307, 2.4, 0.1)
-material = ExtResource("3_8tl60")
+material = ExtResource("4_6w053")
 
 [node name="Glass" type="Node3D" parent="."]
 
