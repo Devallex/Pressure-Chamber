@@ -60,6 +60,8 @@ func get_input(delta):
 	var actual_speed = base_speed
 	var currentHeight = $CollisionShape.shape.height
 	if is_controlling_character():
+		if Input.is_action_pressed("sprint"):
+			actual_speed *= 2.5
 		if mobile_ui and OS.has_feature("mobile"):
 			var mobile_movement = mobile_ui.movement_direction
 			if mobile_movement != Vector2.ZERO:
@@ -74,8 +76,6 @@ func get_input(delta):
 				velocity += actual_speed * transform.basis.x
 			if Input.is_action_pressed("move_left"):
 				velocity += -actual_speed * transform.basis.x
-		if Input.is_action_pressed("sprint"):
-				actual_speed *= 2.5
 		if Input.is_action_pressed("crouch"):
 				$CollisionShape.shape.height = lerp(currentHeight, 1.0, min(1.0, delta * CROUCH_SPEED))
 		else:
