@@ -17,3 +17,4 @@ normal_enabled = true
 normal_texture = ExtResource("4_vtlf2")
 heightmap_enabled = true
 heightmap_texture = ExtResource("2_6gbgi")
+uv1_triplanar = true

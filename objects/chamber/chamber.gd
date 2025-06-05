@@ -37,9 +37,11 @@ func _ready() -> void:
 		door_open = not door_open
 		if door_open:
 			%Door.hide()
+			%DoorPrompt.action_text = "Close"
 			%Door.use_collision = false
 		else:
 			%Door.show()
+			%DoorPrompt.action_text = "Open"
 			%Door.use_collision = true
 	)
 

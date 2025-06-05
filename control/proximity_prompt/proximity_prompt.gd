@@ -11,6 +11,12 @@ class_name ProximityPrompt extends Node3D
 @export var billboard: BaseMaterial3D.BillboardMode = BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED ## How the prompt is oriented relative to the camera.
 @export var hide_mode: HIDE_MODE = HIDE_MODE.NEVER
 
+var keybinds = {
+	"primary_interact": "E",
+	"secondary_interact": "F",
+	"hold_interact": "R"
+}
+
 const SHRINK_FACTOR: float = 0.85
 
 var time_activated: float = 0
@@ -99,6 +105,8 @@ func _updateVisuals():
 			%Sprite3D.modulate = Color(1.0, 1.0, 1.0, 0.5)
 	
 	%Action.text = action_text
+	
+	%Trigger.text = "Press " + keybinds[input_action]
 	
 	#%Sprite3D.billboard = billboard
 	#%Key.text = input_action

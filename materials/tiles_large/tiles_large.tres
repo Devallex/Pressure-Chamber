@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://c61p85pwhnfup"]
+
+[ext_resource type="Texture2D" uid="uid://dicq62e25r3sd" path="res://materials/tiles_large/Tiles107_2K-PNG_Color.png" id="1_wqfxt"]
+[ext_resource type="Texture2D" uid="uid://cd4e0wrhx5shw" path="res://materials/tiles_large/Tiles107_2K-PNG_AmbientOcclusion.png" id="2_kkwg4"]
+[ext_resource type="Texture2D" uid="uid://07jjae1wbiyx" path="res://materials/tiles_large/Tiles107_2K-PNG_Displacement.png" id="3_sdjww"]
+[ext_resource type="Texture2D" uid="uid://nvibdu46hl25" path="res://materials/tiles_large/Tiles107_2K-PNG_NormalGL.png" id="4_xo3rf"]
+[ext_resource type="Texture2D" uid="uid://br4yali1jqq4r" path="res://materials/tiles_large/Tiles107_2K-PNG_Roughness.png" id="5_doyui"]
+
+[resource]
+albedo_texture = ExtResource("1_wqfxt")
+roughness_texture = ExtResource("5_doyui")
+normal_enabled = true
+normal_texture = ExtResource("4_xo3rf")
+ao_enabled = true
+ao_texture = ExtResource("2_kkwg4")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_sdjww")
+uv1_triplanar = true
