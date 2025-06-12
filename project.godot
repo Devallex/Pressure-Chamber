@@ -22,6 +22,7 @@ GlobalAtmosphere="*res://classes/global_atmosphere.gd"
 Mouse="*res://classes/mouse.gd"
 Gases="*res://gasses/gases.gd"
 Dialog="*res://control/dialog.gd"
+CachedManager="*res://classes/cached/cached_manager.gd"
 
 [display]
 

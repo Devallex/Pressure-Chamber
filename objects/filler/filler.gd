@@ -1,7 +1,7 @@
 extends Node3D
 
 func _process(delta: float) -> void:
-	var bodies = %Area3D.get_overlapping_bodies()
+	var bodies = %PlaceSlot.get_overlapping_bodies()
 	var selected_body = null
 	for body: Node3D in bodies:
 		if body.get("atmosphere"):

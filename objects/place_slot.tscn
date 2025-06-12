@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://be4g10anyxhb1"]
+
+[ext_resource type="Material" uid="uid://d16dajk3wf54u" path="res://materials/metal/metal.tres" id="1_lfh10"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6fdfs"]
+size = Vector3(1.21997, 1.3475, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pd8px"]
+size = Vector3(0.8, 0.1, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_anir0"]
+size = Vector3(0.8, 0.2, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1uesa"]
+size = Vector3(0.8, 0.01, 0.505)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d2gae"]
+size = Vector3(0.5, 0.1, 0.01)
+
+[node name="PlaceSlot" type="Area3D"]
+
+[node name="Rail" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("1_lfh10")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.00182739, -0.05)
+use_collision = true
+radius = 0.01
+height = 0.8
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.00182739, 0.05)
+use_collision = true
+radius = 0.01
+height = 0.8
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.101827, 0.25)
+use_collision = true
+radius = 0.01
+height = 0.8
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.101827, -0.25)
+use_collision = true
+radius = 0.01
+height = 0.8
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.4, 0.101827, 0)
+use_collision = true
+radius = 0.01
+height = 0.51
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Rail"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.4, 0.101827, 0)
+use_collision = true
+radius = 0.01
+height = 0.51
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00109863, 0.688339, 0)
+shape = SubResource("BoxShape3D_6fdfs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0.25)
+shape = SubResource("BoxShape3D_pd8px")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.5, -0.866025, 0, 0.866025, 0.5, 0, 0.15, 0.3)
+shape = SubResource("BoxShape3D_anir0")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-1, 7.57103e-08, 4.37114e-08, 0, 0.5, -0.866025, -8.74228e-08, -0.866025, -0.5, 0, 0.15, -0.3)
+shape = SubResource("BoxShape3D_anir0")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_1uesa")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -0.25)
+shape = SubResource("BoxShape3D_pd8px")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.4, 0.05, 0)
+shape = SubResource("BoxShape3D_d2gae")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.4, 0.05, 0)
+shape = SubResource("BoxShape3D_d2gae")
