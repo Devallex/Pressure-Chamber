@@ -60,3 +60,11 @@ func _ready() -> void:
 	set_anchor_and_offset(SIDE_TOP, 0.2, 0)
 	set_anchor_and_offset(SIDE_RIGHT, 0.8, 0)
 	set_anchor_and_offset(SIDE_BOTTOM, 0.8, 0)
+	
+	var close_button = Button.new()
+	close_button.anchor_left = 1.0
+	close_button.offset_left = 10
+	close_button.add_theme_color_override("font_color", Color.RED)
+	close_button.text = "Close [Tab]"
+	add_child(close_button)
+	close_button.pressed.connect(hide_dialog)

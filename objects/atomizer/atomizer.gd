@@ -9,7 +9,7 @@ func _ready() -> void:
 			
 			var tween = body.create_tween()
 			tween.set_ease(Tween.EASE_IN_OUT)
-			tween.tween_property(body, "global_position", body.global_position - Vector3(0, 2.0 ,0), 2.0)
+			tween.tween_property(body, "global_position", body.global_position - Vector3(0, 2.0 ,0), 0.5)
 			tween.finished.connect(func():
 				body.get_parent_node_3d().queue_free()
 			)

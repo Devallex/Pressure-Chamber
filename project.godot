@@ -23,6 +23,7 @@ Mouse="*res://classes/mouse.gd"
 Gases="*res://gasses/gases.gd"
 Dialog="*res://control/dialog.gd"
 CachedManager="*res://classes/cached/cached_manager.gd"
+Manual="*res://control/manual/manual.tscn"
 
 [display]
 
