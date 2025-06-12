@@ -130,6 +130,10 @@ func moveMouse(relative: Vector2):
 		rotateCameraX(spin, relative.y / 10)
 
 func _process(_delta):
+	if global_position.y > 50.0:
+		print("HIT THE SKY")
+		global_transform = Transform3D().translated_local(Vector3(0, 2.0, 0))
+	
 	if is_controlling_character():
 		if OS.has_feature("mobile"):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

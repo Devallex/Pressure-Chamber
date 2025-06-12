@@ -58,6 +58,8 @@ static func getClosestPrompt(input_action: String):
 	var closest_prompt: ProximityPrompt = null
 	var closest_distance: float = INF
 	for prompt in all_prompts:
+		if not is_instance_valid(prompt):
+			continue
 		var distance: float = prompt.global_position.distance_to(camera.global_position)
 		if prompt.disabled or prompt.input_action != input_action or distance > prompt.camera_max_distance:
 			continue

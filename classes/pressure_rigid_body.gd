@@ -2,9 +2,11 @@ class_name PressureRigidBody extends PressureBody
 
 @export var min_size: float = 0.1
 @export var max_size: float = 2
+@export var disabled_pickup: bool = false
 
 @onready var collision_shape: CollisionShape3D = %CollisionShape3D
 @onready var csg_sphere: CSGSphere3D = %CSGSphere3D
+
 
 var prompt: ProximityPrompt
 
@@ -39,9 +41,12 @@ func _process(delta: float) -> void:
 	_affect_size(_calculate_scalar())
 	
 	if Character.current:
-		prompt.disabled = Character.current.holding != null
-		if Character.current.holding == self:
-			_while_held()
+		if disabled_pickup:
+			prompt.disabled = true
+		else:
+			prompt.disabled = Character.current.holding != null
+			if Character.current.holding == self:
+				_while_held()
 	
 	if %RigidBody3D.global_position.y <= -50.0:
 		%RigidBody3D.global_transform = Transform3D().translated(Vector3(0.0, 10.0, 0.0))

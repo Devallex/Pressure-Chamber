@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6hps28637svp"]
+[gd_scene load_steps=15 format=3 uid="uid://b6hps28637svp"]
 
 [ext_resource type="Environment" uid="uid://d2a2b26pn30cl" path="res://world_environment.tres" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://kghv7hxl5taw" path="res://control/top_left/top_left.tscn" id="1_ryrav"]
@@ -13,6 +13,7 @@
 [ext_resource type="Material" uid="uid://b7subp0g5yhel" path="res://materials/concrete_tiled/concrete_tiled.tres" id="7_mfdv2"]
 [ext_resource type="Material" uid="uid://c61p85pwhnfup" path="res://materials/tiles_large/tiles_large.tres" id="9_iotsf"]
 [ext_resource type="PackedScene" uid="uid://be4g10anyxhb1" path="res://objects/place_slot.tscn" id="13_lc2xo"]
+[ext_resource type="PackedScene" uid="uid://c2mw8ml1jw052" path="res://objects/atomizer/atomizer.tscn" id="14_215e1"]
 
 [node name="Game" type="Node3D"]
 
@@ -140,3 +141,11 @@ monitorable = false
 transform = Transform3D(-0.150916, 0, 0.988547, 0, 1, 0, -0.988547, 0, -0.150916, 6.44526, 0.423566, 1.17895)
 monitoring = false
 monitorable = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9557, -0.279297, -1.11282)
+use_collision = true
+size = Vector3(4.92712, 0.441406, 6.39563)
+
+[node name="Atomizer" parent="." instance=ExtResource("14_215e1")]
+transform = Transform3D(-0.0806338, 0, 0.996744, 0, 1, 0, -0.996744, 0, -0.0806338, 6.16965, 0, -6.08247)
