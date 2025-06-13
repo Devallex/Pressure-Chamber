@@ -36,7 +36,7 @@ func _ready() -> void:
 		if not pressurize:
 			atmosphere.gases = {}
 			atmosphere.pressure = 1.0
-			atmosphere.vdw_pressure.get_value_forced()
+			atmosphere.vdw_pressure.set_value(target_atmosphere.vdw_pressure.get_value_forced())
 		else:
 			atmosphere.pressure = target_atmosphere.pressure
 	)
@@ -50,6 +50,11 @@ func _ready() -> void:
 			%Door.show()
 			%DoorPrompt.action_text = "Open"
 			%Door.use_collision = true
+	)
+	
+	target_atmosphere.vdw_pressure.changed.connect(func(value: float):
+		if pressurize:
+			atmosphere.vdw_pressure.set_value(value)
 	)
 
 func _process(delta: float) -> void:

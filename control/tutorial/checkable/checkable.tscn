@@ -1,9 +1,28 @@
-[gd_scene format=3 uid="uid://dcgg4svg5crqc"]
+[gd_scene load_steps=2 format=3 uid="uid://dcgg4svg5crqc"]
 
-[node name="Checkable" type="Control"]
-layout_mode = 3
-anchors_preset = 15
+[ext_resource type="Script" uid="uid://2xloxrcmxb6w" path="res://control/tutorial/checkable/checkable.gd" id="1_tvexr"]
+
+[node name="Checkable" type="VBoxContainer"]
+anchors_preset = -1
+anchor_left = 0.1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tvexr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="CheckBox" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1

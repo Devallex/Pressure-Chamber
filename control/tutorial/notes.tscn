@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cb2awnqge14ay"]
+
+[node name="Notes" type="LineEdit"]
+placeholder_text = "Notes..."

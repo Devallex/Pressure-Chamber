@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://1cr8cam51ax7"]
+[gd_scene load_steps=5 format=3 uid="uid://1cr8cam51ax7"]
 
+[ext_resource type="Theme" uid="uid://dhkuy7snye7ud" path="res://control/theme.tres" id="1_lxb3d"]
 [ext_resource type="Script" uid="uid://cvwjeknfq8tdk" path="res://control/manual/manual.gd" id="1_o1qby"]
+[ext_resource type="PackedScene" uid="uid://dcgg4svg5crqc" path="res://control/tutorial/checkable/checkable.tscn" id="2_26me2"]
+[ext_resource type="PackedScene" uid="uid://cb2awnqge14ay" path="res://control/tutorial/notes.tscn" id="3_3tnyn"]
 
 [node name="Manual" type="VBoxContainer"]
 anchors_preset = 15
@@ -10,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_lxb3d")
 script = ExtResource("1_o1qby")
 
 [node name="TabContainer" type="TabContainer" parent="."]
@@ -17,11 +21,65 @@ layout_mode = 2
 size_flags_vertical = 3
 current_tab = 0
 
-[node name="Control" type="Control" parent="TabContainer"]
+[node name="Usage" type="ScrollContainer" parent="TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Control2" type="Control" parent="TabContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Usage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Usage/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Checkable" parent="TabContainer/Usage/MarginContainer/VBoxContainer" instance=ExtResource("2_26me2")]
+layout_mode = 2
+
+[node name="Van der Waals" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Van der Waals"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Van der Waals/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Intro" type="Label" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "On the pressure chamber, you can see [Ideal] \"Pressure\" and \"Van der Waals Pressure\"
+
+Let's find the difference."
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Input HIGH TEMPERATURE and HIGH CONCENTRATION into the pressure chamber. How big is the difference between VDW and Ideal pressures?"
+autowrap_mode = 2
+
+[node name="Notes" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer" instance=ExtResource("3_3tnyn")]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Input LOW TEMPERATURE and LOW CONCENTRATION into the pressure chamber. How big is the difference now?"
+autowrap_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "Hi"
+popup/item_0/id = 0
+popup/item_1/text = "Bye"
+popup/item_1/id = 1

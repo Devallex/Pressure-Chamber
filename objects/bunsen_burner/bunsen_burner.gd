@@ -13,6 +13,11 @@ extends Node3D
 var current_body: PressureRigidBody
 var previous_temperature: float = 0.0
 
+func _add_body(pressure_body: PressureRigidBody):
+	current_body = pressure_body
+	previous_temperature = pressure_body.temperature
+	pressure_body.temperature = set_temperature
+
 func _ready() -> void:
 	%ActivityPrompt.triggered.connect(func():
 		disabled = not disabled
@@ -20,15 +25,15 @@ func _ready() -> void:
 	
 	Dialog.bind_dialog(%TemperaturePrompt, dialog)
 	
+	
+	
 	place_slot.body_entered.connect(func(body: Node3D):
 		if current_body != null:
 			return
 		if body.get_parent_node_3d() is not PressureRigidBody:
 			return
 		var pressure_body: PressureRigidBody = body.get_parent_node_3d()
-		current_body = pressure_body
-		previous_temperature = pressure_body.temperature
-		pressure_body.temperature = set_temperature
+		_add_body(pressure_body)
 	)
 	place_slot.body_exited.connect(func(body: Node3D):
 		if current_body != body.get_parent_node_3d():

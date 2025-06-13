@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6hps28637svp"]
+[gd_scene load_steps=18 format=3 uid="uid://b6hps28637svp"]
 
 [ext_resource type="Environment" uid="uid://d2a2b26pn30cl" path="res://world_environment.tres" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://kghv7hxl5taw" path="res://control/top_left/top_left.tscn" id="1_ryrav"]
@@ -14,6 +14,14 @@
 [ext_resource type="PackedScene" uid="uid://be4g10anyxhb1" path="res://objects/place_slot.tscn" id="13_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://bbih0mja6l6g" path="res://objects/bunsen_burner/bunsen_burner.tscn" id="14_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://c2mw8ml1jw052" path="res://objects/atomizer/atomizer.tscn" id="14_215e1"]
+[ext_resource type="PackedScene" uid="uid://83kv4touef7g" path="res://objects/poster/poster.tscn" id="15_7sc4i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_215e1"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sc4i"]
+albedo_color = Color(1, 0.784314, 0, 1)
+metallic = 0.56
 
 [node name="Game" type="Node3D"]
 
@@ -139,6 +147,11 @@ transform = Transform3D(-0.150916, 0, 0.988547, 0, 1, 0, -0.988547, 0, -0.150916
 monitoring = false
 monitorable = false
 
+[node name="PlaceSlot3" parent="." instance=ExtResource("13_lc2xo")]
+transform = Transform3D(-0.150916, 0, 0.988547, 0, 1, 0, -0.988547, 0, -0.150916, -33.1084, 0.454137, 0.0470719)
+monitoring = false
+monitorable = false
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9557, -0.279297, -1.11282)
 use_collision = true
@@ -152,3 +165,23 @@ transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819
 
 [node name="BunsenBurner2" parent="." instance=ExtResource("14_7sc4i")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -6.47184, 0.00104, -1.11175)
+
+[node name="Ball3" parent="." instance=ExtResource("3_fc0e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1761, 1.14922, 0.0859635)
+
+[node name="CollisionShape3D" parent="Ball3/RigidBody3D" index="0"]
+shape = SubResource("SphereShape3D_215e1")
+
+[node name="CSGSphere3D" parent="Ball3/RigidBody3D" index="1"]
+material = SubResource("StandardMaterial3D_7sc4i")
+
+[node name="Poster" parent="." instance=ExtResource("15_7sc4i")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.68393, 1.9243, 7.39184)
+text = "(P + a/V²)(V - nb) = nRT
+
+a/V² → IMF Correction
+a → molecular attractions
+b → molecular volume (per mol)"
+color = Color(0.498039, 0.6, 1, 1)
+
+[editable path="Ball3"]

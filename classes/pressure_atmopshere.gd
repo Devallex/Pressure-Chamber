@@ -50,6 +50,8 @@ func _calculate_vdw_pressure():
 	
 	total_pressure = ideal_term - correction_term
 	
+	if is_nan(total_pressure):
+		total_pressure = 0.0
 	vdw_pressure.set_value(total_pressure)
 
 func _ready() -> void:

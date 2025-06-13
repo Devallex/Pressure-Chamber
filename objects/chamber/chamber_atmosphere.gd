@@ -5,3 +5,6 @@ func _update_pressure() -> void:
 
 func _process(delta: float) -> void:
 	pass
+
+func _ready() -> void:
+	add_to_group("pressusre_atmosphere")
