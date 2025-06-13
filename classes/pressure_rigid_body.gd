@@ -25,7 +25,7 @@ func _ready():
 		if Character.current:
 			Character.current.hold(self)
 	)
-	gases[Gases.get_by_symbol("He")] = 0.05
+	#gases[Gases.get_by_symbol("He")] = 0.05
 	
 	%RigidBody3D.add_child(prompt)
 

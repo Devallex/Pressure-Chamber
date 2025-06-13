@@ -19,7 +19,7 @@ func _calculate_scalar() -> float:
 	var min_scalar = 0.05
 	var max_scalar = 3.0
 	
-	if pressure <= 0.1:
+	if pressure == 0.0:
 		return min_scalar
 	
 	var time_to_max_scalar: float = 10000.0
