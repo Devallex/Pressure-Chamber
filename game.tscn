@@ -108,27 +108,6 @@ size = Vector3(15, 2, 0.1)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0444206, 0.0447677, -3.21963)
 pressurize = false
 
-[node name="Ball" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0.000368585, -0.000113713, -0.000368614, 1, -0.000203936, 0.000113619, 0.000203988, 1, -2.08512, 1.23595, -3.18278)
-
-[node name="Ball2" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08766, 0.506296, -3.18278)
-
-[node name="Ball4" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93059, 0.696478, -3.18278)
-
-[node name="Ball6" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0101934, 0.516226, -3.18278)
-
-[node name="Ball7" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.87176, 1.00696, -2.60927)
-
-[node name="Ball8" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, 0.27955, 1.75613, -3.46218)
-
-[node name="Ball9" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, -0.0183166, 0.516226, -2.81679)
-
 [node name="Filler" parent="." instance=ExtResource("6_ryrav")]
 transform = Transform3D(-0.975982, 0, -0.217854, 0, 1, 0, 0.217854, 0, -0.975982, 2.12034, 0.0146366, 5.49514)
 
