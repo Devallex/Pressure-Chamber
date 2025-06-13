@@ -19,11 +19,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-text = "Help & Controls
-—————————————
-
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[font_size=24][center]Controls[/center][/font_size]
 H — Help Menu
 M — Manual (written tutorial)
 
@@ -34,4 +34,13 @@ E — Primary interact
 F — Secondary interact
 R — Pick up and drop items
 
-PRESS TAB TO BACK OUT OF ANY MENU, LIKE THIS ONE!"
+PRESS TAB TO BACK OUT OF ANY MENU, LIKE THIS ONE!
+
+[font_size=24][center]Instruction Manual[/center]
+[font_size=14] - Start at the [b]gas supply[/b] on the [b]pressure chamber[/b] (hold E to interact)
+ - Select the molar quantities of the gas(es) you want using the sliders on the left.
+[You can increace the amount of particles shown in the particle representation by using the slider on the bottom.]
+ - You can change the tempurature by using the [b]thermostat[/b] on the right of the [b]gas supply[/b].
+ - Then, hit the pressurise button next to the door
+ - You can seal and unseal the container by using E on [b]chamber door[/b]
+ - You can grab a [b]balloon[/b] from the chamber and place it in the tray on the side, and use the second gas supply to change the amount of molecules in the balloon."

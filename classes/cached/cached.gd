@@ -2,6 +2,8 @@ class_name Cached extends Resource
 
 ## Behavior for caching resource intensive values and recalculating at larger time intervals to save preformance.
 
+static var instances: Array[Cached] = []
+
 signal calculate ## A request for set_value(...) to be called
 signal updated(value: Variant) ## When the value has changed
 
@@ -20,13 +22,15 @@ var value: Variant
 var time_since_last_update: float = 0.0
 
 ## Calculate emitted immediatley after starting, even with the default value passed
-func _init(_value: float, _interval: float = interval, calculate_callback = null) -> void:
+func _init(_value: float, _interval: float = interval) -> void:
 	value = _value
 	interval = _interval
-	if calculate_callback is Callable:
-		calculate.connect(calculate_callback)
 	calculate.emit()
-	CachedManager.register(self)
+	instances.append(self)
+
+func add_calculate_callback(callback: Callable) -> void:
+	calculate.connect(callback)
+	calculate.emit()
 
 ## Called automatically by CachedManager
 func _process(delta: float) -> void:
@@ -46,7 +50,7 @@ func set_value(_value: Variant) -> void:
 	if emit_update_when_identical or value != _value:
 		updated.emit(value)
 
-## Returns the value, which may be either cached or recalculated.
+## Returns the value, which may be eiwther cached or recalculated.
 func get_value() -> Variant:
 	if interval == -1.0 or time_since_last_update >= interval * global_interval_scalar:
 		return get_value_forced()

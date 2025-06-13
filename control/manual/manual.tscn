@@ -14,28 +14,14 @@ script = ExtResource("1_o1qby")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 3
 current_tab = 0
 
-[node name="Hello" type="Control" parent="TabContainer"]
+[node name="Control" type="Control" parent="TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer"]
+[node name="Control2" type="Control" parent="TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "[font_size=24][center]Instruction Manual[/center]
-[font_size=14] - Start at the Infinite Inert Gas Supply on the chamber, and hold E to open it.
- - Select the molar quantities of the gas(es) you want using the sliders on the left.
- - You can increace the amount of particles shown in the particle representation by using the slider on the bottom.
- - You can change the tempurature by using the thermostat on the right of the Infinite Inert Gas Supply.
- - Then, use F to hit the pressurise button on the right side, and the chamber will pressurize.
- - You can depressurize/open the container by using F on the \"Open\" button next to the pressurize button.
- - You can grab a balloon from the chamber and place it in the tray on the side, and use the second Infinite Inert Gas Supply to change the amount of molecules in the balloon.
-"

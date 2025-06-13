@@ -7,13 +7,14 @@ func _ready() -> void:
 		if parent is PressureBody:
 			parent.disabled_pickup = true
 			
-			var tween = body.create_tween()
+			var tween: Tween = body.create_tween()
 			tween.set_ease(Tween.EASE_IN_OUT)
-			tween.tween_property(body, "global_position", body.global_position - Vector3(0, 2.0 ,0), 0.5)
+			tween.tween_property(body, "global_transform", %In.global_transform, 0.35)
+			tween.chain().tween_property(body, "global_transform", %Death.global_transform, 0.75)
 			tween.finished.connect(func():
 				body.get_parent_node_3d().queue_free()
 			)
 			tween.play()
 		elif body is Character:
-			body.global_transform = %Out.global_transform
+			body.global_transform = %Player.global_transform
 	)

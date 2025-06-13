@@ -4,12 +4,11 @@ class_name PressureAtmosphere extends Node3D
 @export var pressure: float = 1.0
 @export var temperature: float = 273.15
 @export var volume: float = 1.0
+@export var gases: Dictionary[Gas, float] = {}
 
-@onready var vdw_pressure = Cached.new(0.0, 0.5, _calculate_vdw_pressure)
+var vdw_pressure := Cached.new(0.0, 0.5)
 func _calculate_vdw_pressure():
 	# Get system values once to avoid repeated calculations
-	var temperature = get_temperature()  # K
-	var volume = get_volume()  # m³ or L (ensure consistent units)
 	
 	# Gas constant R (adjust units based on your system)
 	# R = 8.314 J/(mol·K) = 0.08314 L·bar/(mol·K)
@@ -21,27 +20,27 @@ func _calculate_vdw_pressure():
 	var mixed_b = 0.0  # For gas mixture van der Waals 'b' parameter
 	
 	# Calculate total moles first
-	for gas in gases:
-		total_moles += gases[gas]
+	for gas_moles in gases.values():
+		total_moles += gas_moles
 	
 	if total_moles == 0.0:
-		return 0.0
+		vdw_pressure.set_value(0.0)
 	
 	# For gas mixtures, calculate effective a and b parameters
 	# Using mixing rules: a_mix = Σ Σ x_i * x_j * sqrt(a_i * a_j)
 	# b_mix = Σ x_i * b_i
 	
 	var mole_fractions = {}
-	for gas in gases:
+	for gas in gases.keys():
 		mole_fractions[gas] = gases[gas] / total_moles
 	
 	# Calculate mixed b parameter (linear mixing rule)
-	for gas in gases:
+	for gas in gases.keys():
 		mixed_b += mole_fractions[gas] * gas.vdw_b
 	
 	# Calculate mixed a parameter (geometric mixing rule)
-	for gas_i in gases:
-		for gas_j in gases:
+	for gas_i in gases.keys():
+		for gas_j in gases.keys():
 			mixed_a += mole_fractions[gas_i] * mole_fractions[gas_j] * sqrt(gas_i.vdw_a * gas_j.vdw_a)
 	
 	# Calculate van der Waals pressure
@@ -53,10 +52,13 @@ func _calculate_vdw_pressure():
 	
 	vdw_pressure.set_value(total_pressure)
 
-@export var gases: Dictionary[Gas, float] = {}
-
 func _ready() -> void:
+	vdw_pressure.add_calculate_callback(_calculate_vdw_pressure)
 	add_to_group("presusre_atmosphere")
+	
+	vdw_pressure.changed.connect(func(pressure: float):
+		print(pressure)
+	)
 
 func _process(delta: float) -> void:
 	_update_pressure()
