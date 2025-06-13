@@ -53,38 +53,10 @@ R — Pick up and drop items
 TAB — Leave any menu page"
 autowrap_mode = 2
 
-[node name="Pressure Chamber" type="ScrollContainer" parent="TabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Pressure Chamber"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Pressure Chamber/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="TabContainer/Pressure Chamber/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Start at the as supply on the pressure chamber (hold E to interact)
-Select the molar quantities of the gas(es) you want using the sliders on the left.
-[You can increase the amount of particles shown in the particle representation by using the slider on the bottom]
-
-You can change the tempurature by using the thermostat (which outputs thermos) on the right of the gas supply.
-
-Close the door if it's open, then hit the pressurize button!
-
-Use the screen to see all the information being outputted by the pressure chamber."
-autowrap_mode = 2
-
 [node name="Balloons" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Balloons"]
 layout_mode = 2
@@ -105,6 +77,34 @@ DROP the balloon over the second gas supply's tray to change the gas composition
 
 If you don't like the gas composition or temperature of one of the balloons, you can destroy it with the bin in the back corner.
 If you need a new one, pick it up from the \"spawn\" tray."
+autowrap_mode = 2
+
+[node name="Pressure Chamber" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Pressure Chamber"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Pressure Chamber/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/Pressure Chamber/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start at the as supply on the pressure chamber (hold E to interact)
+Select the molar quantities of the gas(es) you want using the sliders on the left.
+[You can increase the amount of particles shown in the particle representation by using the slider on the bottom]
+
+You can change the tempurature by using the thermostat (which outputs thermos) on the right of the gas supply.
+
+Fill a balloon with gas. Close the door if it's open, then hit the pressurize button!
+
+Use the screen to see all the information being outputted by the pressure chamber."
 autowrap_mode = 2
 
 [node name="Van der Waals" type="ScrollContainer" parent="TabContainer"]

@@ -18,11 +18,14 @@ func _calculate_scalar() -> float:
 	var max_pressure = 20.0
 	var min_scalar = 0.05
 	var max_scalar = 3.0
+	
+	if pressure <= 0.1:
+		return min_scalar
+	
 	var time_to_max_scalar: float = 10000.0
 	var clamped_pressure = clamp(pressure_difference, 0.0, time_to_max_scalar)
 	var normalized = clamped_pressure / time_to_max_scalar
 	var curved = pow(normalized, 1.0)
-	return lerp(min_scalar, max_scalar, curved)
 	return lerp(min_scalar, max_scalar, curved)
 
 

@@ -36,9 +36,12 @@ func _ready() -> void:
 		if not pressurize:
 			atmosphere.gases = {}
 			atmosphere.pressure = 1.0
+			%PressurizePrompt.action_text = "ADD Gas"
 		else:
 			atmosphere.pressure = target_atmosphere.pressure
+			%PressurizePrompt.action_text = "RMV Gas"
 		atmosphere.vdw_pressure.set_value(target_atmosphere.vdw_pressure.get_value_forced())
+		
 	)
 	%DoorPrompt.triggered.connect(func():
 		door_open = not door_open
@@ -69,6 +72,9 @@ func _process(delta: float) -> void:
 
 	%DoorPrompt.disabled = not balanced
 	%PressurizePrompt.disabled = door_open
+	
+	if pressurize:
+		atmosphere.pressure = target_atmosphere.pressure
 	
 	#var pressure_goal: float = target_atmosphere.pressure
 	#if not pressurize:
