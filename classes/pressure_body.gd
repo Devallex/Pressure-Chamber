@@ -12,8 +12,8 @@ func _affect_size(size: float):
 	scale = Vector3.ONE * size
 
 func _calculate_scalar() -> float:
-	var pressure_difference: float = pressure / max(0.01, atmosphere.pressure)
-	var scalar = 1e-1 * scalar_weight * (pressure_difference - 1.0) + 1
+	var pressure_difference: float = pressure / max(0.001, atmosphere.pressure)
+	var scalar = 1e-4 * scalar_weight * (pressure_difference - 1.0) + 0.2
 	return scalar
 
 func _process(delta: float) -> void:

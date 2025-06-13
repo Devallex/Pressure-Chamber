@@ -54,7 +54,6 @@ func _ready() -> void:
 	
 	target_atmosphere.vdw_pressure.emit_update_when_identical = true
 	target_atmosphere.vdw_pressure.updated.connect(func(value: float):
-		print("JDSAKDJAKSDJAKLSAJDAKJDKLSAJDKLASJKLDASJKDSA")
 		if pressurize:
 			atmosphere.vdw_pressure.set_value(value)
 		else:
