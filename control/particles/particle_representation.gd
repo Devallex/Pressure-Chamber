@@ -58,6 +58,7 @@ func create_and_remove_particles():
 		
 		for particle: Particle in particles_by_gas:
 			particle.radius = particle_radius
+			particle._update_visuals()
 
 var base_positions: Dictionary[StaticBody2D, Vector2]
 func _ready() -> void:

@@ -35,4 +35,3 @@ func _ready() -> void:
 func _integrate_forces(state):
 	# Store last velocity before physics step
 	state.linear_velocity = state.linear_velocity.normalized() * initial_speed
-

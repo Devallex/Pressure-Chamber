@@ -31,8 +31,6 @@ angular_damp_mode = 1
 script = ExtResource("1_inuur")
 radius = 10.0
 initial_speed = 200.0
-label = null
-color = null
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
