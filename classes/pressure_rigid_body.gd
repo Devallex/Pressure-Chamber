@@ -31,7 +31,7 @@ func _ready():
 
 
 func _affect_size(size: float):
-	size = clampf(size, min_size,max_size)
+	size = clampf(size, min_size, max_size)
 	var radius: float = size / 2
 	collision_shape.shape.radius = radius
 	csg_sphere.radius = radius

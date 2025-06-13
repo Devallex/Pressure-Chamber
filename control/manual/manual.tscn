@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://1cr8cam51ax7"]
+[gd_scene load_steps=4 format=3 uid="uid://1cr8cam51ax7"]
 
 [ext_resource type="Theme" uid="uid://dhkuy7snye7ud" path="res://control/theme.tres" id="1_lxb3d"]
 [ext_resource type="Script" uid="uid://cvwjeknfq8tdk" path="res://control/manual/manual.gd" id="1_o1qby"]
-[ext_resource type="PackedScene" uid="uid://dcgg4svg5crqc" path="res://control/tutorial/checkable/checkable.tscn" id="2_26me2"]
 [ext_resource type="PackedScene" uid="uid://cb2awnqge14ay" path="res://control/tutorial/notes.tscn" id="3_3tnyn"]
 
 [node name="Manual" type="VBoxContainer"]
@@ -21,27 +20,97 @@ layout_mode = 2
 size_flags_vertical = 3
 current_tab = 0
 
-[node name="Usage" type="ScrollContainer" parent="TabContainer"]
+[node name="Welcome" type="ScrollContainer" parent="TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Usage"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Welcome"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Usage/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Welcome/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Checkable" parent="TabContainer/Usage/MarginContainer/VBoxContainer" instance=ExtResource("2_26me2")]
+[node name="Label" type="Label" parent="TabContainer/Welcome/MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "Go click one of the tabs to learn how to use the simulation!
+
+
+
+If you missed the help window, here are the control as well:
+H — Help Menu
+M — Manual (written tutorial)
+
+W, A, S, D — Strafe/move character
+Up, Down, Left, Right Arrow Keys — Turn camera (OR USE MOUSE)
+
+E — Primary interact
+F — Secondary interact
+R — Pick up and drop items
+TAB — Leave any menu page"
+autowrap_mode = 2
+
+[node name="Pressure Chamber" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Pressure Chamber"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Pressure Chamber/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/Pressure Chamber/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start at the as supply on the pressure chamber (hold E to interact)
+Select the molar quantities of the gas(es) you want using the sliders on the left.
+[You can increase the amount of particles shown in the particle representation by using the slider on the bottom]
+
+You can change the tempurature by using the thermostat (which outputs thermos) on the right of the gas supply.
+
+Close the door if it's open, then hit the pressurize button!
+
+Use the screen to see all the information being outputted by the pressure chamber."
+autowrap_mode = 2
+
+[node name="Balloons" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Balloons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Balloons/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/Balloons/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Find a baloon, and pick it up (Hold R). Then, drop it (Press R).
+
+DROP the balloon over the bunsen burner's tray to adjust it's temperature. (Press F to change temperature.)
+DROP the balloon over the second gas supply's tray to change the gas composition of the balloon. Make sure not to use the supply attached to the pressure chamber!
+
+If you don't like the gas composition or temperature of one of the balloons, you can destroy it with the bin in the back corner.
+If you need a new one, pick it up from the \"spawn\" tray."
+autowrap_mode = 2
 
 [node name="Van der Waals" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Van der Waals"]
 layout_mode = 2
@@ -76,10 +145,41 @@ layout_mode = 2
 text = "Input LOW TEMPERATURE and LOW CONCENTRATION into the pressure chamber. How big is the difference now?"
 autowrap_mode = 2
 
+[node name="Notes2" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer" instance=ExtResource("3_3tnyn")]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Overall, where does VDW deviate MORE from ideal behavior?"
+autowrap_mode = 2
+
 [node name="OptionButton" type="OptionButton" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
 layout_mode = 2
 item_count = 2
-popup/item_0/text = "Hi"
+popup/item_0/text = "HIGH TEMPERATURE and HIGH CONCENTRATION"
 popup/item_0/id = 0
-popup/item_1/text = "Bye"
+popup/item_1/text = "LOW TEMPERATURE and LOW CONCENTRATION"
 popup/item_1/id = 1
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "In these conditions you chose above, is the VDW pressure or Ideal pressure greater?"
+autowrap_mode = 2
+
+[node name="OptionButton2" type="OptionButton" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "VDW is less than Ideal"
+popup/item_0/id = 0
+popup/item_1/text = "VDW is greater than Ideal"
+popup/item_1/id = 1
+
+[node name="Label6" type="Label" parent="TabContainer/Van der Waals/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Does this seem counterintuitive to what you'd think?
+
+Try looking at the poster on the wall, and see if you explain why you observed the difference. (What factors does the VDW formula have? And which must be stronger for you to observe the difference?)"
+autowrap_mode = 2

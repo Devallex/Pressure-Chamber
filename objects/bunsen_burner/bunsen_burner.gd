@@ -39,7 +39,7 @@ func _ready() -> void:
 		if current_body != body.get_parent_node_3d():
 			return
 		var pressure_body: PressureRigidBody = body.get_parent_node_3d()
-		pressure_body.temperature = previous_temperature
+		#pressure_body.temperature = previous_temperature
 		current_body = null
 	)
 

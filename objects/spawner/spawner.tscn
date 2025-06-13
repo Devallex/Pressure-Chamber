@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn2ch010q211b"]
+
+[ext_resource type="PackedScene" uid="uid://be4g10anyxhb1" path="res://objects/place_slot.tscn" id="1_jjtoq"]
+[ext_resource type="Script" uid="uid://dw7j2ihppkjb5" path="res://objects/spawner/spawner.gd" id="1_s17ww"]
+[ext_resource type="PackedScene" uid="uid://i16dniaw7tor" path="res://control/proximity_prompt/proximity_prompt.tscn" id="3_s17ww"]
+
+[node name="Spawner" type="Node3D"]
+script = ExtResource("1_s17ww")
+
+[node name="PlaceSlot" parent="." instance=ExtResource("1_jjtoq")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.390557, 0)
+
+[node name="ProximityPrompt" parent="." instance=ExtResource("3_s17ww")]
+unique_name_in_owner = true
+action_text = "Spawn"
+one_shot = true
+
+[node name="Spawn" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05104, 0)

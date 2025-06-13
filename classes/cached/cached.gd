@@ -49,7 +49,6 @@ func set_value(_value: Variant) -> void:
 	value = _value
 	if emit_update_when_identical or value != _value:
 		updated.emit(value)
-	print("YUP! Something calculated!", value)
 
 ## Returns the value, which may be eiwther cached or recalculated.
 func get_value() -> Variant:

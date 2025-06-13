@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b6hps28637svp"]
+[gd_scene load_steps=19 format=3 uid="uid://b6hps28637svp"]
 
 [ext_resource type="Environment" uid="uid://d2a2b26pn30cl" path="res://world_environment.tres" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://kghv7hxl5taw" path="res://control/top_left/top_left.tscn" id="1_ryrav"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bbih0mja6l6g" path="res://objects/bunsen_burner/bunsen_burner.tscn" id="14_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://c2mw8ml1jw052" path="res://objects/atomizer/atomizer.tscn" id="14_215e1"]
 [ext_resource type="PackedScene" uid="uid://83kv4touef7g" path="res://objects/poster/poster.tscn" id="15_7sc4i"]
+[ext_resource type="PackedScene" uid="uid://bn2ch010q211b" path="res://objects/spawner/spawner.tscn" id="16_80cx4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_215e1"]
 resource_local_to_scene = true
@@ -116,12 +117,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08766, 0.506296, -3.18278)
 [node name="Ball4" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93059, 0.696478, -3.18278)
 
-[node name="Ball5" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68358, 1.00754, 3.66141)
-
-[node name="Ball10" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53093, 1.00754, 1.1287)
-
 [node name="Ball6" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0101934, 0.516226, -3.18278)
 
@@ -136,16 +131,6 @@ transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, 
 
 [node name="Filler" parent="." instance=ExtResource("6_ryrav")]
 transform = Transform3D(-0.975982, 0, -0.217854, 0, 1, 0, 0.217854, 0, -0.975982, 2.12034, 0.0146366, 5.49514)
-
-[node name="PlaceSlot" parent="." instance=ExtResource("13_lc2xo")]
-transform = Transform3D(0.14793, 0, 0.988998, 0, 1, 0, -0.988998, 0, 0.14793, 6.61437, 0.423566, 3.56321)
-monitoring = false
-monitorable = false
-
-[node name="PlaceSlot2" parent="." instance=ExtResource("13_lc2xo")]
-transform = Transform3D(-0.150916, 0, 0.988547, 0, 1, 0, -0.988547, 0, -0.150916, 6.44526, 0.423566, 1.17895)
-monitoring = false
-monitorable = false
 
 [node name="PlaceSlot3" parent="." instance=ExtResource("13_lc2xo")]
 transform = Transform3D(-0.150916, 0, 0.988547, 0, 1, 0, -0.988547, 0, -0.150916, -33.1084, 0.454137, 0.0470719)
@@ -177,11 +162,21 @@ material = SubResource("StandardMaterial3D_7sc4i")
 
 [node name="Poster" parent="." instance=ExtResource("15_7sc4i")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.68393, 1.9243, 7.39184)
-text = "(P + a/V²)(V - nb) = nRT
+text = "Van der Waals Pressure
 
-a/V² → IMF Correction
-a → molecular attractions
-b → molecular volume (per mol)"
+(P + a/V²)(V - nb) = nRT
+
+a/V² → Forces correction
+nb → Volume correction
+
+a → Molecular attractions
+b → Molecular volume"
 color = Color(0.498039, 0.6, 1, 1)
+
+[node name="Spawner" parent="." instance=ExtResource("16_80cx4")]
+transform = Transform3D(0.344971, 0, -0.938613, 0, 1, 0, 0.938613, 0, 0.344971, 6.38517, 0.0407503, 0.895276)
+
+[node name="Spawner2" parent="." instance=ExtResource("16_80cx4")]
+transform = Transform3D(-0.213116, 0, -0.977027, 0, 1, 0, 0.977027, 0, -0.213116, 6.53385, -2.38419e-07, 2.65437)
 
 [editable path="Ball3"]
