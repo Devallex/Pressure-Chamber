@@ -1,7 +1,7 @@
 class_name Cached extends Resource
 
 ## Behavior for caching resource intensive values and recalculating at larger time intervals to save preformance.
-
+ 
 static var instances: Array[Cached] = []
 
 signal calculate ## A request for set_value(...) to be called
@@ -49,6 +49,7 @@ func set_value(_value: Variant) -> void:
 	value = _value
 	if emit_update_when_identical or value != _value:
 		updated.emit(value)
+	print("YUP! Something calculated!", value)
 
 ## Returns the value, which may be eiwther cached or recalculated.
 func get_value() -> Variant:

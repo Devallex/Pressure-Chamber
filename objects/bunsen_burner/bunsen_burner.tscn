@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbih0mja6l6g"]
+[gd_scene load_steps=8 format=3 uid="uid://bbih0mja6l6g"]
 
 [ext_resource type="Script" uid="uid://d4mhw5gjy2ja2" path="res://objects/bunsen_burner/bunsen_burner.gd" id="1_mbunv"]
 [ext_resource type="Material" uid="uid://d16dajk3wf54u" path="res://materials/metal/metal.tres" id="1_ywcpi"]
 [ext_resource type="Material" uid="uid://tjkvy58oknk" path="res://materials/fire.tres" id="2_asbg3"]
 [ext_resource type="PackedScene" uid="uid://i16dniaw7tor" path="res://control/proximity_prompt/proximity_prompt.tscn" id="2_bcowy"]
 [ext_resource type="PackedScene" uid="uid://syyjryypw341" path="res://control/dialogs/temperature_dialog/temperature_dialog.tscn" id="3_0ko2e"]
+[ext_resource type="PackedScene" uid="uid://be4g10anyxhb1" path="res://objects/place_slot.tscn" id="6_8hvxj"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_hilqq"]
 resource_local_to_scene = true
@@ -55,42 +56,6 @@ emission_shape = 1
 emission_sphere_radius = 0.05
 gravity = Vector3(0, 1, 0)
 
-[node name="Rail" type="CSGCombiner3D" parent="."]
-material_override = ExtResource("1_ywcpi")
-use_collision = true
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Rail"]
-transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.75, -0.05)
-use_collision = true
-radius = 0.01
-height = 0.8
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Rail"]
-transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.75, 0.05)
-use_collision = true
-radius = 0.01
-height = 0.8
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Rail"]
-transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.85, 0.25)
-use_collision = true
-radius = 0.01
-height = 0.8
-
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Rail"]
-transform = Transform3D(6.70552e-08, 1, 0, -1, 6.70552e-08, 0, 0, 0, 1, 0, 0.85, -0.25)
-use_collision = true
-radius = 0.01
-height = 0.8
-
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Rail"]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -0.4, 0.85, 0)
-use_collision = true
-radius = 0.01
-height = 0.51
-
-[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Rail"]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.4, 0.85, 0)
-use_collision = true
-radius = 0.01
-height = 0.51
+[node name="PlaceSlot" parent="." instance=ExtResource("6_8hvxj")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.787011, 0)

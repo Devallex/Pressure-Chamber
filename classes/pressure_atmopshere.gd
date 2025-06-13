@@ -54,11 +54,7 @@ func _calculate_vdw_pressure():
 
 func _ready() -> void:
 	vdw_pressure.add_calculate_callback(_calculate_vdw_pressure)
-	add_to_group("presusre_atmosphere")
-	
-	vdw_pressure.changed.connect(func(pressure: float):
-		print(pressure)
-	)
+	add_to_group("pressusre_atmosphere")
 
 func _process(delta: float) -> void:
 	_update_pressure()

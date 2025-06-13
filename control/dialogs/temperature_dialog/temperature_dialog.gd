@@ -1,8 +1,10 @@
-extends VBoxContainer
+extends Control
 
 @export var set_temperature: float = 573
 @export var min_temperature: float = 573
 @export var max_temperature: float = 1773
+
+@export var found: bool = true
 
 @onready var slider := %Slider
 @onready var label := %Label
@@ -13,6 +15,11 @@ func _ready() -> void:
 	slider.value = set_temperature
 
 func _process(delta: float) -> void:
+	if found:
+		%NotFound.hide()
+	else:
+		%NotFound.show()
+	
 	slider.min_value = min_temperature
 	slider.max_value = max_temperature
 	

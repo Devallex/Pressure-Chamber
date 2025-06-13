@@ -32,6 +32,6 @@ func _process(delta: float) -> void:
 		chamber.atmosphere.vdw_pressure.get_value(),
 		chamber.atmosphere.temperature,
 		chamber.target_atmosphere.pressure,
-		chamber.atmosphere.vdw_pressure.get_value(),
+		chamber.target_atmosphere.vdw_pressure.get_value(),
 		chamber.target_atmosphere.temperature
 	]

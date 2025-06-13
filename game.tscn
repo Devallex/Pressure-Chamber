@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6hps28637svp"]
+[gd_scene load_steps=15 format=3 uid="uid://b6hps28637svp"]
 
 [ext_resource type="Environment" uid="uid://d2a2b26pn30cl" path="res://world_environment.tres" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://kghv7hxl5taw" path="res://control/top_left/top_left.tscn" id="1_ryrav"]
@@ -12,6 +12,7 @@
 [ext_resource type="Material" uid="uid://b7subp0g5yhel" path="res://materials/concrete_tiled/concrete_tiled.tres" id="7_mfdv2"]
 [ext_resource type="Material" uid="uid://c61p85pwhnfup" path="res://materials/tiles_large/tiles_large.tres" id="9_iotsf"]
 [ext_resource type="PackedScene" uid="uid://be4g10anyxhb1" path="res://objects/place_slot.tscn" id="13_lc2xo"]
+[ext_resource type="PackedScene" uid="uid://bbih0mja6l6g" path="res://objects/bunsen_burner/bunsen_burner.tscn" id="14_7sc4i"]
 [ext_resource type="PackedScene" uid="uid://c2mw8ml1jw052" path="res://objects/atomizer/atomizer.tscn" id="14_215e1"]
 
 [node name="Game" type="Node3D"]
@@ -95,17 +96,17 @@ use_collision = true
 size = Vector3(15, 2, 0.1)
 
 [node name="Chamber" parent="." instance=ExtResource("3_feb5d")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.51233, 0.0447677, -2.03048)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0444206, 0.0447677, -3.21963)
 pressurize = false
 
 [node name="Ball" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0.000368585, -0.000113713, -0.000368614, 1, -0.000203936, 0.000113619, 0.000203988, 1, -2.55303, 1.23595, -1.99363)
+transform = Transform3D(1, 0.000368585, -0.000113713, -0.000368614, 1, -0.000203936, 0.000113619, 0.000203988, 1, -2.08512, 1.23595, -3.18278)
 
 [node name="Ball2" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55557, 0.506296, -1.99363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08766, 0.506296, -3.18278)
 
 [node name="Ball4" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46268, 0.696478, -1.99363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93059, 0.696478, -3.18278)
 
 [node name="Ball5" parent="." instance=ExtResource("3_fc0e3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68358, 1.00754, 3.66141)
@@ -114,19 +115,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68358, 1.00754, 3.66141)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53093, 1.00754, 1.1287)
 
 [node name="Ball6" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457716, 0.516226, -1.99363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0101934, 0.516226, -3.18278)
 
 [node name="Ball7" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.403851, 1.00696, -1.42012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.87176, 1.00696, -2.60927)
 
 [node name="Ball8" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, -0.188359, 1.75613, -2.27303)
+transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, 0.27955, 1.75613, -3.46218)
 
 [node name="Ball9" parent="." instance=ExtResource("3_fc0e3")]
-transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, -0.486226, 0.516226, -1.62764)
+transform = Transform3D(-0.505221, 0, 0.86299, 0, 1, 0, -0.86299, 0, -0.505221, -0.0183166, 0.516226, -2.81679)
 
 [node name="Filler" parent="." instance=ExtResource("6_ryrav")]
-transform = Transform3D(-0.984644, 0, 0.174576, 0, 1, 0, -0.174576, 0, -0.984644, -3.26276, 0.0146366, 4.87176)
+transform = Transform3D(-0.975982, 0, -0.217854, 0, 1, 0, 0.217854, 0, -0.975982, 2.12034, 0.0146366, 5.49514)
 
 [node name="PlaceSlot" parent="." instance=ExtResource("13_lc2xo")]
 transform = Transform3D(0.14793, 0, 0.988998, 0, 1, 0, -0.988998, 0, 0.14793, 6.61437, 0.423566, 3.56321)
@@ -144,4 +145,10 @@ use_collision = true
 size = Vector3(4.92712, 0.441406, 6.39563)
 
 [node name="Atomizer" parent="." instance=ExtResource("14_215e1")]
-transform = Transform3D(-0.0806338, 0, 0.996744, 0, 1, 0, -0.996744, 0, -0.0806338, 6.16965, 0, -6.08247)
+transform = Transform3D(-0.993729, 0, 0.111816, 0, 1, 0, -0.111816, 0, -0.993729, 6.13222, 0, -5.77114)
+
+[node name="BunsenBurner" parent="." instance=ExtResource("14_7sc4i")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -6.35449, 0.00104, 2.4141)
+
+[node name="BunsenBurner2" parent="." instance=ExtResource("14_7sc4i")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -6.47184, 0.00104, -1.11175)
